@@ -1,0 +1,132 @@
+{% extends 'basic.html' %}
+
+{% block title %}Arts career based jobs in India - Toolsandjobs {% endblock %}
+{% block meta %}
+    <meta name="og:title" property="og:title" content="Arts career based jobs in India - Toolsandjobs">
+
+
+    <link rel="canonical" href="{% url 'arts' %}">
+
+  <!-- this is meta desc -->
+  <meta name="description" content="Here you will find Arts career based jobs in India.
+                            Here jobs like Filmmaker,Art curator,Photographer,
+                            Graphic designer,Fashion designer,Animator/Video game designer-Tools&jobs">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,jobs in India,online jobs,arts career,arts based jobs,
+career in arts,">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+  {% endblock %}
+
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+{% block content1 %}
+<br xmlns="http://www.w3.org/1999/html">
+<div class="container">
+
+<h3 style="color:orange;">Arts career field is dedicated to those who are make better there quality through culture & sharing of arts and
+self expression.</h3><br>
+    <h3 style="color:#FF5733;">We have this type of position included below.</h3>
+    <ul class="list-group list-group-horizontal list-group-flush">
+  <li class="list-group-item">Singer/songwriter</li>
+  <li class="list-group-item">Filmmaker</li>
+  <li class="list-group-item">Art curator</li>
+    <li class="list-group-item">Photographer</li>
+
+
+</ul>
+    <ul class="list-group list-group-horizontal list-group-flush">
+  <li class="list-group-item">Graphic designer</li>
+          <li class="list-group-item">Fashion designer</li>
+  <li class="list-group-item">Animator/Video game designer</li>
+
+
+</ul><br>
+</div>
+
+
+
+{% for i in art %}
+
+<div class="container">
+
+<div class="accordion card" id="accordionExample" >
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+          <img src="{{i.photo2.url}}"  style="width:75px;height:75px;" class="card-img-top" alt="Toolsandjobs- Arts career based jobs">
+
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Read more
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body text-white bg-danger">
+        <b style="font-size:20px;"> Job desc</b> <i class="fas fa-prescription-bottle fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.descr2|safe}}<br><hr color="black">
+         <b style="font-size:20px;">Location</b> <i class="fas fa-map-marker-alt fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.loc2}}<br><hr color="black">
+         <b style="font-size:20px;">Type</b> <i class="fas fa-industry fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.ind_type2}}<br><hr color="black">
+         <b style="font-size:20px;">Educ/Eligi.</b> <i class="fas fa-university fa-2x"></i>:&nbsp;&nbsp;{{i.edu_or_elig2}}<br><hr color="black">
+         <b style="font-size:20px;">Vaccancies</b> <i class="fab fa-vaadin fa-2x"></i>&nbsp; :&nbsp;&nbsp;{{i.vacc2}}<br><hr color="black">
+         <b style="font-size:20px;">Functional area</b> <i class="fas fa-chart-area fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.func_area2}}<br><hr color="black">
+         <b style="font-size:20px;">Role</b> <i class="fas fa-user-tag fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.role2}}<br><hr color="black">
+         <b style="font-size:20px;">Skills</b> <i class="fas fa-code fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.skil2}}<br><hr color="black">
+         <b style="font-size:20px;">Salary</b> <i class="fas fa-money-check-alt fa-2x"></i> &nbsp;:&nbsp;&nbsp;{{i.sal2}}<br><hr color="black">
+         <b style="font-size:20px;">Experience</b> <i class="fas fa-briefcase fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.exper2}}<br><hr color="black">
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="card-body text-white bg-warning">
+      <h5 class="card-title">{{i.head2}}</h5><hr color="white">
+    <p class="card-text">{{i.desc2|safe}}</p>
+    <a href="{{i.url2}}" class="btn btn-primary">Go there</a><hr>
+
+       <!-- social share-->
+      <i style="color:black;" class="far fa-share-square fa-2x">Share this:</i>
+      <a href="https://api.whatsapp.com/send?text={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head2}}&submit=" data-action="share/whatsapp/share"><i style="color:#1BFF00;" class="fab fa-whatsapp-square fa-2x"></i></a>
+
+      <script async src="https://telegram.org/js/telegram-widget.js?12" data-telegram-share-url="{{ request.build_absolute_uri }}search/?query1={{i.head2}}&submit=" data-comment="{{i.head2}}"></script>
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u={% url 'engifree' %}search/?query1={{i.head2}}&submit=">
+<i style="color:#0049FF;" class="fab fa-facebook-square fa-2x"></i></a>
+
+      <a href="https://twitter.com/home?status={{i.head2}}%20{{ request.build_absolute_uri }}search/?query1={{i.head2}}&submit=">
+        <i style="color:#00B9FF;" class="fab fa-twitter-square fa-2x"></i></a>
+
+      <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}search/?query1={{i.head2}}&submit='><i style="color:#FF1300;" class="fab fa-google-plus-square fa-2x"></i></a>
+
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}search/?query1={{i.head2}}&submit=&title={{i.head2}}&summary={{ i.desc2 }}&source={{ request.get_host }}">
+<i style="color:#0800FF;" class="fab fa-linkedin fa-2x"></i></a>
+
+      <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}search/?query1={{i.head2}}&submit=&title={{i.head2}}."><i style="color:#FF000C;" class="fab fa-reddit-square fa-2x"></i></a>
+
+
+      <a data-pin-do="buttonBookmark" href="//www.pinterest.com/pin/create/button/"><img src="{{ i.photo2.url }}" /></a>
+
+  </div>
+  </div>
+
+
+</div>
+<br>
+
+{% endfor %}
+
+
+
+
+{% endblock %}

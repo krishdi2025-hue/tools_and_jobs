@@ -1,0 +1,42 @@
+{% extends 'test-list.html' %}{% load static %}
+{% block title %}Search:Global & Learning Education Hub for objective questions{% endblock %}
+{% block meta %}
+
+    <meta name="og:title" property="og:title" content="Search:Global & Learning Education Hub for objective questions">
+
+  <meta name="og:url" property=”og:url” content=”{{request.build_absolute_uri}}” />
+
+  <meta name="og:type" property=”og:type” content=”Education/Website” />
+
+  <link rel="canonical" href="{% url 'searchmcq' %}">
+
+
+
+
+  <!-- this is meta desc -->
+  <meta name="description" content="ToolsandJobs Explore the world of Education, Because only education matters! Engineering, Development, Educational MCQ's for all. Global & Learning Hub">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs, tech mcq's,educational mcq's,engineering mcq's,developer mcq's,world of mcq's,">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+
+  {% endblock %}
+{% block content1 %}
+<br>
+
+<div class="container">
+
+
+    <h3 style="color:#FF5733;">Search results are:</h3>
+
+    {% if object_list|length < 1 %}
+    <p>No search results</p>
+    {% endif %}
+    </div>
+<br>
+
+
+
+{% endblock %}

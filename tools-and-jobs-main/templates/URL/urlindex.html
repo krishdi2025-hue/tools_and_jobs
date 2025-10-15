@@ -1,0 +1,174 @@
+{% extends 'basic.html' %} {% load crispy_forms_tags %} {% load static %}
+
+
+{% block title %}A Free URL shortener tool with your own words - ToolsandJobs{% endblock %}
+    {% block meta %}
+
+    <meta name="description" content="Free URL shortener tool with add your own words/characters that's very easy to use, works very fast and secure. Try it now!">
+
+    <meta name="og:title" property="og:title" content="A Free URL shortener tool with your own words - ToolsandJobs">
+    <meta property="og:url" content="{{request.build_absolute_uri}}" />
+
+    <meta property="og:description" content="Free URL shortener tool with add your own words/characters that's very easy to use, works very fast and secure. Try it now!">
+
+    <meta property="og:image" content="https://www.toolsandjobs.info/static/imgs/surls/fast-process-free-url-shortener-toolsandjobs.png" />
+    <meta property="og:image:secure_url" content="https://www.toolsandjobs.info/static/imgs/surls/fast-process-free-url-shortener-toolsandjobs.png" />
+
+
+    <meta property="og:image:type" content="some/mime" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="400" />
+
+    <meta property="og:image:alt" content="Toolsandjobs-We brings the best jobs, web tools & free courses">
+
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="{% url 'ushort' %}">
+
+
+    <!-- meta keywords -->
+    <meta name="keywords" content="Toolsandjobs,jobs in India,online jobs,free learning courses,for students,for developers,
+huge recruiters,free email job alerts,">
+
+    <!-- author -->
+    <meta name="author" content="Tools&Jobs">
+
+    {% endblock %}
+
+    {% block schema %}
+    {% endblock %}
+
+
+
+
+{% block content1 %}
+
+<div class="jumbotron jumbotron-fluid" style="background-image: url({% static 'imgs/post-blog-image.png' %}); background-size: 100% 100%;">
+    <div class="container">
+        <h1 class="display-4" style="color:#FF5733;">A Free URL shortener tool with your own choice</h1><br>
+        <!-- ad -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="fluid"
+             data-ad-layout-key="-fb+5w+4e-db+86"
+             data-ad-client="ca-pub-5545425921972474"
+             data-ad-slot="9881218087"></ins>
+        <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <div class="content-section">
+                <form action="" method="post">
+                    {% csrf_token %}
+
+                    <h2 class="border-bottom mb-4">Create a Short URL in a sec.</h2>
+                    {{ form|crispy }}
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-info">Short Now..</button>
+                    </div>
+                </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content2 %}
+<br>
+<div class="container">
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+        <div class="card border-primary h-100">
+            <img src="{% static 'imgs/surls/always-free-free-url-shortener-toolsandjobs.png' %}" style="height:200px; width:200px;" class="card-img-top" alt="always-free-free-url-shortener-toolsandjobs">
+            <div class="card-body">
+                <h5 class="card-title"><b>Always Free URL shortener</b></h5>
+                <p class="card-text">Free to use this URL shortener tool because we think all need this and ToolsandJobs always provide you</p>
+            </div><br>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card border-secondary h-100">
+            <img src="{% static 'imgs/surls/add-your-own-word-free-url-shortener-toolsandjobs.png' %}" style="height:200px; width:200px;" class="card-img-top" alt="add-your-own-word-free-url-shortener-toolsandjobs">
+            <div class="card-body">
+                <h5 class="card-title"><b>Add your own characters</b></h5>
+                <p class="card-text">This free URL shortener provides you to add your own characters/words and create free URL to use anywhere in the world.</p>
+            </div>
+        </div>
+    </div><br>
+    <div class="col">
+        <div class="card border-warning h-100">
+            <img src="{% static 'imgs/surls/fast-process-free-url-shortener-toolsandjobs.png' %}" style="height:200px; width:200px;" class="card-img-top" alt="fast-process-free-url-shortener-toolsandjobs">
+            <div class="card-body">
+                <h5 class="card-title"><b>Works very fast</b></h5>
+                <p class="card-text">We not only providing you a simple URL, we provides you the speed. Once you created a free short link with ToolsandJobs it opens like a blink your eye.</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- ad -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-format="fluid"
+         data-ad-layout-key="-fb+5w+4e-db+86"
+         data-ad-client="ca-pub-5545425921972474"
+         data-ad-slot="9881218087"></ins>
+    <script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card border-warning h-100">
+                <img src="{% static 'imgs/surls/secure-free-url-shortener-toolsandjobs.png' %}" style="height:200px; width:200px;" class="card-img-top" alt="secure-free-url-shortener-toolsandjobs">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Secure URL</b></h5>
+                    <p class="card-text">Providing secure link to you is ours responsibility so don't take tension cause we give you the best.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card border-primary h-100">
+                <img src="{% static 'imgs/surls/easy-to-use-free-url-shortener-toolsandjobs.png' %}" style="height:200px; width:200px;" class="card-img-top" alt="easy-to-use-free-url-shortener-toolsandjobs">
+                <div class="card-body">
+                    <h5 class="card-title"><b>Easy to use</b></h5>
+                    <p class="card-text">It's so simple to create this short URL anyone can easily understand. Just add your original URL which you need to short add your own words and submit. That's it!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content3 %}
+<br>
+
+<div class="content-section">
+    <div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+
+            <h2 class="border-bottom mb-4">Create a Short URL in a seconds.</h2>
+            {{ form|crispy }}
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-outline-info">Short Now..</button>
+        </div>
+    </form>
+    </div>
+</div>
+<!-- ad -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fb+5w+4e-db+86"
+     data-ad-client="ca-pub-5545425921972474"
+     data-ad-slot="9881218087"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+{% endblock %}
+
+

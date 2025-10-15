@@ -1,0 +1,175 @@
+{% extends 'basic.html' %}
+{% block title %}Blogs: Explore the world of Education, Because only education matters! ToolsandJobs{% endblock %}
+{% block meta %}{% load static %}
+
+  <meta name="og:title" property="og:title" content="Blogs: Explore the world of Education, Because only education matters! ToolsandJobs">
+
+  <meta name="og:url" property=”og:url” content=”{{request.build_absolute_uri}}” />
+
+
+  <meta property="og:description" content="Blogs: Explore the world of Education, Because only education matters! ToolsandJobs">
+
+  <meta property="og:image" content="https://www.toolsandjobs.info/static/imgs/logo4.png" />
+<meta property="og:image:secure_url" content="https://www.toolsandjobs.info/static/imgs/logo4.png" />
+
+
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="400" />
+
+  <meta property="og:image:alt" content="Blogs: Explore the world of Education, Because only education matters! ToolsandJobs">
+
+    <meta property="og:image:type" content="some/mime" />
+
+
+  <meta property="og:type" content="website" />
+
+
+
+  <link rel="canonical" href="{% url 'blog' %}">
+
+  <!-- this is meta desc -->
+  <meta name="description" content="ToolsandJobs Explore the world of Education, Because only education matters! Education blog for helping students to crack placements exams, mcq exams, practising aptitude,coding and more">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,world of education,coding practice,placements questions,placements coding questions,crack placements exams,mcq exams,practising aptitude,coding and more,">
+
+  <!-- author -->
+  <meta name="author" content="Tools&Jobs">
+
+  <link rel="canonical" href="{% url 'blog' %}">
+
+
+  {% endblock %}
+
+{% block nav %}
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'index' %}">
+
+    <img src="{% static 'imgs/logo4.png' %}" style="width:300px;"  loading="lazy" title="ToolsandJobs logo" alt="Toolsandjobs company logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a style="color:#FF5733;" class="nav-link" href="{% url 'blog' %}">
+        Prep. Kit
+		</a>
+      </li>
+        {% block mcqcat %}
+      <li class="nav-item dropdown">
+        <a style="color:#FF5733;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		MCQ's for exams
+		</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/mcq/category/firstyear">First Year</a>
+          <a class="dropdown-item" href="/mcq/category/secondyear">Second Year</a>
+          <a class="dropdown-item" href="/mcq/category/thirdyear">Third Year</a>
+          <a class="dropdown-item" href="/mcq/category/lastyear">Fourth Year</a>
+         </div>
+      </li>
+        {% endblock %}
+      <li class="nav-item">
+        <a style="color:#FF5733;" class="nav-link" href="{% url 'learnfree' %}">
+		Free courses
+		</a>
+      </li>
+       <li class="nav-item dropdown">
+        <a style="color:#FF5733;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Jobs
+		</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'engineering' %}">Engineering jobs</a>
+          <a class="dropdown-item" href="{% url 'medical' %}">Medical jobs</a>
+          <a class="dropdown-item" href="{% url 'arts' %}">Arts jobs</a>
+          <a class="dropdown-item" href="{% url 'govtJobs' %}">Govt jobs</a>
+          <a class="dropdown-item" href="{% url 'education' %}">Education jobs</a>
+          <a class="dropdown-item" href="{% url 'law' %}">Law & public  policy jobs</a>
+          <a class="dropdown-item" href="{% url 'business' %}">Business development, manage. jobs</a>
+          <a class="dropdown-item" href="{% url 'install' %}">Installation,mainatainance jobs</a>
+          <a class="dropdown-item" href="{% url 'sales' %}">Sales jobs</a>
+          <a class="dropdown-item" href="{% url 'communication' %}">Communications jobs</a>
+        </div>
+      </li>
+       <form method="GET" action="#" class="form-inline ">
+      <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search your questions here" aria-label="Search">
+      <button name="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+        {% block content5 %}
+      <li class="nav-item">
+        <a style="color:#FF5733;" class="nav-link" href="{% url 'contactus' %}">Contact us</a>
+      </li>
+        {% endblock %}
+	  {% block content4 %}
+	  <button type="button" style="left-margin:20px;" class="btn btn-warning">
+      <li class="nav-item">
+        <a style="color:white;" class="nav-link" href="{% url 'suscribe' %}">Free alerts form</a>
+      </li>
+	  </button>
+
+
+
+      {% endblock %}
+	</ul>
+
+  </div>
+
+</nav>
+
+
+{% endblock %}
+
+{% block content1 %}
+
+<div class="jumbotron jumbotron-fluid" style="background-image: url({% static 'imgs/post-blog-image.png' %}); background-size: 100% 100%;">
+  <div class="container">
+    <h1 class="display-4" style="color:#FF5733;"><b>Universe dosen't end!</b></h1>
+    <p class="lead"><b>Explore the world of Education, Because only education matters!</b></p>
+    <form method="GET" action="" class="form-inline ">
+      <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search your questions here" aria-label="Search">
+      <button name="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form><hr>
+
+  <div class="row">
+    <div class="col">
+<center>
+<a href="https://t.me/toolsjobs"><button type="button" class="btn btn-outline-info">Join Telegram <i class="fa fa-telegram" aria-hidden="true"></i>
+</button></a>
+</center>
+      </div>
+    <div class="col">
+<a href="https://chat.whatsapp.com/FrHi9ZMw6dq7Yp0IzeU81y"><button type="button" class="btn btn-outline-success">Join Whatsapp <i class="fa fa-whatsapp" aria-hidden="true"></i>
+</button></a>
+       </div>
+  </div>
+</div>
+  </div>
+{% endblock %}
+
+
+
+
+{% block content2 %}
+<div class="container">
+  {% for post in postblog_list %}
+<div class="card border-info" style="align:right;">
+  <div class="card-header h2" style="color:#FF5733;">{{ post.titles }}</div>
+  <div class="card-body text-dark">
+  <p class="card-text text-muted"><img src="{% static 'imgs/created-on-toolsandjobs.png' %}" width="20px" height="20px"> {{ post.created_on}} </p>
+    <p class="card-text">{{post.contents|slice:":60"|safe }}</p>
+    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">View Answer &rarr;</a>
+  </div>
+</div><br>
+  {% endfor %}
+  </div>
+
+{% endblock %}
+
+
+{% block content3 %}
+
+
+
+{% endblock %}

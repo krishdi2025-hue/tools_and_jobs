@@ -1,0 +1,69 @@
+{% extends 'basic.html' %}
+
+{% block title %}About us - Toolsandjobs {% endblock %}
+{% block meta %}
+    <meta name="og:title" property="og:title" content="About us - Toolsandjobs">
+
+
+    <link rel="canonical" href="{% url 'about_us' %}">
+
+  <!-- this is meta desc -->
+  <meta name="description" content="This is about us page. Provides you what we are & what we are doing for students">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,jobs in India,online jobs,arts career,arts based jobs,
+career in arts,about us,">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+  {% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+{% block content1 %}
+
+<div class="container">{% load static %}
+    <h1 style="color:#FF5733;">ABOUT US</h1>
+
+
+    <img alt="Contact us for complaints,request or ads - Toolsandjobs" style='height: 100%; width: 100%; object-fit: contain' src="{% static 'imgs/about-us-toolsandjobs.jpg' %}">
+    <br><br>
+    <p>
+        Hello to everyone and welcome to toolsandjobs. As the name said this site is for tools, jobs but only for this
+        two but also for free learning courses. This website is make for helping students who are needed help in their
+        education, for jobseekers, wanted free learning courses and more.
+    </p>
+    <p>
+        Not only for students this is also for developers, students, medicals, childrens and all no age limit. This provides
+        you the best what you want i.e. job alerts via email, alerts through whatsapp and telegram for absolutely free for all.
+    </p>
+     <p>One of the main advantage of site is free placements preparation kits. ToolsandJobs provides you free
+      placements preparation kits for cracking aptitude, coding skills and more of big companies like Google, Microsoft,
+      Facebook, etc</p>
+
+    <h3 style="color:#FF5733;">
+        Contact details:
+    </h3>
+    <ul>
+  <li>Gmail: - <a>toolsplusjobs@gmail.com</a></li>
+  <li>Contact us : - <a href="{% url 'contactus' %}">HERE</a></li>
+    </ul>
+    <h3 style="color:#FF5733;">
+        Find us on:
+    </h3>
+    <a class="btn-floating btn-lg btn-fb" href="https://www.facebook.com/toolsandjobs/" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
+    <a class="btn-floating btn-lg btn-whatsapp" href="https://chat.whatsapp.com/FrHi9ZMw6dq7Yp0IzeU81y" type="button" role="button"><i class="fab fa-whatsapp"></i></a>
+    <a class="btn-floating btn-lg btn-comm" href="https://t.me/toolsjobs" type="button" role="button"><i class="fas fa-comments"></i></a>
+    <a class="btn-floating btn-lg btn-pin" href="https://in.pinterest.com/toolsplusjob/" type="button" role="button"><i class="fab fa-pinterest"></i></a>
+    <a class="btn-floating btn-lg btn-li" href="https://in.linkedin.com/in/drushya-india-15bb521a9" type="button" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+
+
+
+
+</div>
+{% endblock %}

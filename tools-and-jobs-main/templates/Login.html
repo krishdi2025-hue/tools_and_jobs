@@ -1,0 +1,690 @@
+{% extends 'basic.html' %}
+
+{% block title %} Login {% endblock %}
+
+{% block meta %}
+<meta name="og:title" property="og:title" content="Login - Tools&jobs">
+
+<!-- this is meta desc -->
+<meta name="description"
+    content="Login to your account on Tools&jobs to access personalized features and manage your job alerts, course notifications, and web tool subscriptions.">
+<!-- meta keywords -->
+<meta name="keywords" content="Tools&jobs,login,account access,job alerts,courses,web tools,personalized features">
+<!-- author -->
+<meta name="author" content="Tools&Jobs">
+{% endblock %}
+
+
+
+
+
+{% block content4 %}
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+
+
+{% block content1 %}
+
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        background-color: #fafafa;
+        color: #333333;
+        min-height: 100vh;
+        display: block;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+
+
+    /* main-container */
+    .main-container {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    @media (min-width: 1024px) {
+        .main-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    /* Branding Section */
+    .branding {
+        /* display: none; */
+        flex-direction: column;
+        justify-content: center;
+        padding: 3rem;
+        gap: 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+        .branding {
+            display: flex;
+        }
+    }
+
+    .branding h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #FF5733, #F3550D);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+    }
+
+    .branding>p {
+        font-size: 1.25rem;
+        color: #737373;
+        line-height: 1.6;
+    }
+
+    .features {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 2rem;
+    }
+
+    .feature {
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+        transition: all 0.3s;
+    }
+
+    .feature-icon {
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s;
+    }
+
+    .feature-icon.primary {
+        background: rgba(255, 87, 51, 0.1);
+    }
+
+    .feature:hover .feature-icon.primary {
+        background: rgba(255, 87, 51, 0.2);
+    }
+
+    .feature-icon.secondary {
+        background: rgba(243, 85, 13, 0.1);
+    }
+
+    .feature:hover .feature-icon.secondary {
+        background: rgba(243, 85, 13, 0.2);
+    }
+
+    .feature-icon.accent {
+        background: rgba(255, 193, 7, 0.1);
+    }
+
+    .feature:hover .feature-icon.accent {
+        background: rgba(255, 193, 7, 0.2);
+    }
+
+    .feature-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .feature h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .feature p {
+        color: #737373;
+    }
+
+    /* Login Card */
+    .login-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 28rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        padding: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .login-header h1 {
+        font-size: 2.25rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, #FF5733, #F3550D);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+    }
+
+    .login-header p {
+        color: #737373;
+    }
+
+    /* Form */
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #333333;
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        color: #737373;
+    }
+
+    input {
+        width: 100%;
+        padding: 0.625rem 0.75rem;
+        padding-left: 2.5rem;
+        border: 1px solid #e5e5e5;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        transition: all 0.2s;
+        background: white;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #FF5733;
+        box-shadow: 0 0 0 3px rgba(255, 87, 51, 0.1);
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 0.75rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #737373;
+        padding: 0.25rem;
+        display: flex;
+        align-items: center;
+        transition: color 0.2s;
+    }
+
+    .password-toggle:hover {
+        color: #333333;
+    }
+
+    .password-toggle svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .form-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+        width: auto;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .checkbox-group label {
+        font-weight: 400;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .forgot-password {
+        font-size: 0.875rem;
+        color: #FF5733;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 0.75rem;
+        background: linear-gradient(135deg, #FF5733, #F3550D);
+        color: white;
+        border: none;
+        border-radius: 0.375rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(255, 87, 51, 0.3);
+    }
+
+    .submit-btn:active {
+        transform: translateY(0);
+    }
+
+    /* Divider */
+    .divider {
+        position: relative;
+        margin: 1.5rem 0;
+        text-align: center;
+    }
+
+    .divider::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #e5e5e5;
+    }
+
+    .divider span {
+        position: relative;
+        background: white;
+        padding: 0 1rem;
+        color: #737373;
+        font-size: 0.875rem;
+    }
+
+    /* Social Buttons */
+    .social-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .social-btn {
+        padding: 0.75rem;
+        border: 1px solid #e5e5e5;
+        background: white;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .social-btn:hover {
+        border-color: #FF5733;
+    }
+
+    .social-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Sign up link */
+    .signup-link {
+        text-align: center;
+        font-size: 0.875rem;
+        margin-top: 1rem;
+    }
+
+    .signup-link span {
+        color: #737373;
+    }
+
+    .signup-link button {
+        color: #FF5733;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .signup-link button:hover {
+        text-decoration: underline;
+    }
+
+    /* Toast notification */
+    .toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        background: white;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        border-left: 4px solid #FF5733;
+        display: none;
+        z-index: 1000;
+        animation: slideIn 0.3s ease-out;
+    }
+
+    .toast.show {
+        display: block;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(400px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+</style>
+
+
+
+<!-- Main Container -->
+<div class="main-container">
+    <!-- Branding Section -->
+    <div class="branding">
+        <div>
+            <h2>Find Your Perfect Tool</h2>
+            <p>Connect with the right tools and opportunities. Your professional journey starts here.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon primary">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #FF5733;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3>Secure & Encrypted</h3>
+                    <p>Your data is protected with end-to-end encryption</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon secondary">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #F3550D;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3>Lightning Fast</h3>
+                    <p>Experience blazing fast performance and reliability</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon accent">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #FFC107;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3>24/7 Support</h3>
+                    <p>We're here to help you anytime</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>ToolsAndJob</h1>
+                <p>Sign in to access your account</p>
+            </div>
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+            <form method="POST" class="form" id="loginForm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <input type="email" id="email" name="Email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <input type="password" id="password" name="Password" placeholder="••••••••" required
+                            style="padding-right: 2.5rem;">
+                        <button type="button" class="password-toggle" id="togglePassword">
+                            <svg id="eyeIcon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                            <svg id="eyeOffIcon" style="display: none;" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <button type="button" class="forgot-password" id="forgotPassword">Forgot password?</button>
+                </div>
+
+                <button type="submit" class="submit-btn">Sign In</button>
+            </form>
+
+            <div class="divider">
+                <span>Or continue with</span>
+            </div>
+
+            <div class="social-buttons">
+                <button class="social-btn" id="googleLogin">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                        <path fill="currentColor"
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                        <path fill="currentColor"
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                        <path fill="currentColor"
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                    </svg>
+                </button>
+                <button class="social-btn" id="facebookLogin">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                </button>
+                <button class="social-btn" id="appleLogin">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="signup-link">
+                <span>Don't have an account? </span>
+                <button type="button" id="signupLink">Sign up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
+
+
+<!-- script -->
+
+
+
+<script>
+
+    // Password toggle
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+    const eyeOffIcon = document.getElementById('eyeOffIcon');
+
+    togglePassword.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+
+        if (type === 'text') {
+            eyeIcon.style.display = 'none';
+            eyeOffIcon.style.display = 'block';
+        } else {
+            eyeIcon.style.display = 'block';
+            eyeOffIcon.style.display = 'none';
+        }
+    });
+
+    // Form submission
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const remember = document.getElementById('remember').checked;
+
+        if (!email || !password) {
+            console.log('Please fill in all fields');
+            return;
+        }
+
+        showToast('Login successful!');
+    });
+
+    // // Forgot password
+    // document.getElementById('forgotPassword').addEventListener('click', () => {
+    //     showToast('Password reset coming soon!');
+
+    // });
+
+    // // Social login buttons
+    // document.getElementById('googleLogin').addEventListener('click', () => {
+    //     showToast('Google login coming soon!');
+    //     // Redirect to Google OAuth
+    //     // window.location.href = '/auth/google/';
+    // });
+
+    // document.getElementById('facebookLogin').addEventListener('click', () => {
+    //     showToast('Facebook login coming soon!');
+    //     // Redirect to Facebook OAuth
+    //     // window.location.href = '/auth/facebook/';
+    // });
+
+    // document.getElementById('appleLogin').addEventListener('click', () => {
+    //     showToast('Apple login coming soon!');
+    //     // Redirect to Apple OAuth
+    //     // window.location.href = '/auth/apple/';
+    // });
+
+    // // Sign up link
+    // document.getElementById('signupLink').addEventListener('click', () => {
+    //     showToast('Sign up coming soon!');
+    //     // Redirect to sign up page
+    //     // window.location.href = '/signup/';
+    // });
+
+    // Helper function to get CSRF token for Django
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
+
+{% endblock %}

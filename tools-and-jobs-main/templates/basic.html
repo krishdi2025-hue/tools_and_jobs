@@ -1,0 +1,618 @@
+﻿<!DOCTYPE html>
+{% load cloudinary %}
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+
+    div.scrollmenu {
+      background-color: #333;
+      overflow: auto;
+      white-space: nowrap;
+    }
+
+    div.scrollmenu a {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 14px;
+      text-decoration: none;
+    }
+
+    div.scrollmenu a:hover {
+      background-color: #777;
+    }
+  </style>
+
+
+  <title> {% block title %}Toolsandjobs-We brings the best jobs, free courses & MCQs preparation{% endblock %}</title>
+  {% block meta %}
+  <meta name="description"
+    content="Tools&jobs is India's best site for students, developers, jobseekers, for free learning courses. Here peoples come & search their dream job, courses & MCQs preparation.">
+
+  <meta name="og:title" property="og:title"
+    content="Toolsandjobs-We brings the best jobs, free courses & MCQs preparation">
+  <meta property="og:url" content="{{request.build_absolute_uri}}" />
+
+  <meta property="og:description"
+    content="Tools&jobs is India's best site for students, developers, jobseekers, for free learning courses. Here peoples come & search their dream job, courses & MCQs preparation.">
+
+  <meta property="og:image" content="https://www.toolsandjobs.info/static/imgs/logo4.png" />
+  <meta property="og:image:secure_url" content="https://www.toolsandjobs.info/static/imgs/logo4.png" />
+
+
+  <meta property="og:image:type" content="some/mime" />
+  <meta property="og:image:width" content="400" />
+  <meta property="og:image:height" content="400" />
+
+  <meta property="og:image:alt" content="Toolsandjobs-We brings the best jobs, web tools & free courses">
+
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="{% url 'index' %}">
+
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,jobs in India,online jobs,free learning courses,for students,for developers,
+huge recruiters,free email job alerts,">
+
+  <!-- author -->
+  <meta name="author" content="Tools&Jobs">
+  {% endblock %}
+  <!-- adsense integrate code -->
+  <script data-ad-client="ca-pub-5545425921972474" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-5545425921972474",
+      enable_page_level_ads: true,
+      overlays: { bottom: true }
+    });
+  </script>
+  <!-- Yandex.Metrika counter -->
+  <script
+    type="text / javascript"> (function (m, e, t, r, i, k, a) {m [i] = m [i] || function () {(m [i] .a = m [i] .a || []). push (arguments)}; m [i] .l = 1 * new Date (); k = e.createElement ( t), a = e.getElementsByTagName (t) [0], k.async = 1, k.src = r, a.parentNode.insertBefore (k, a)}) (window, document, "script", "https : //mc.yandex.ru/metrika/tag.js "," ym "); ym (68924968, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true}); </script>
+  <noscript>
+    <div> <img src="https://mc.yandex.ru/watch/68924968" style="position: absolute; left: -9999px;" alt="" /> </div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <meta name="yandex-verification" content="42b043c9a55cbd91" />
+
+  <!-- ms clarity tracking code -->
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "404jhly9w1");
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SMLVDNN5D3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-SMLVDNN5D3');
+  </script>
+
+
+
+  <!-- favicon-->
+  <link rel="shortcut icon" href="{% static 'imgs/icon.png' type='image/x-icon' %}">
+
+
+  <!-- canonical link ie main link -->
+  <link rel="canonical" href="{% url 'index' %}">
+
+  <meta name="twitter:card" content="summary">
+  <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
+
+  <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+  <script src="https://kit.fontawesome.com/b7a3142781.js" crossorigin="anonymous"></script>
+
+  <!-- css-bootstrap -->
+  <!-- css-bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8" />
+
+
+
+  {% block schema %}
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://toolsandjobs.info/mcq"
+  },
+  "headline": "Global & Learning Education Hub For Objective Questions For All Engineering & Programming - ToolsandJobs",
+  "description": "Global & Learning Education Hub For Objective Questions For All Engineering & Programming - ToolsandJobs",
+  "image": "https://www.toolsandjobs.info/static/imgs/logo3.png",
+  "author": {
+    "@type": "Organization",
+    "name": "ToolsandJobs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ToolsandJobs",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.toolsandjobs.info/static/imgs/logo3.png"
+    }
+  },
+  "datePublished": ""
+}
+</script>
+  {% endblock %}
+
+  <!-- simplyanalytics code -->
+  <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" /></noscript>
+
+  <!-- Push bots js start-->
+
+  <script>
+    //some default pre init
+    var PB = PB || {}; PB.q = PB.q || []; PB.events = PB.events || [];
+
+    //PushBots ApplicationId (required)
+    PB.app_id = "616180bcf38e3462fd6269e3";
+    //Your domain name, must be HTTPS or localhost  (required)
+    PB.domain = "https://toolsandjobs.info";
+    //Update and uncomment it if you are using custom safari certificate for your app
+    PB.safari_push_id = "web.com.pushbots.safaripush";
+    //****************************************
+
+    PB.logging_enabled = true;
+    PB.auto_subscribe = true;
+
+    //Custom worker and manifest URL
+    //PB.worker_url = PB.domain + "/pushbots-worker.js";
+
+    //Welcome notification message
+    PB.welcome = { title: "Get latest jobs & Courses now!", message: "Thanks for subscribing!", url: PB.domain };
+
+    function sendNotification() {
+      PB.register();
+      PB.q.push(["sendNotification", { title: "Hey ", message: "Why not?", url: "https://toolsandjobs.info" }]);
+    }
+
+  </script>
+
+  <script src="//cdn.pushbots.com/js/sdk.min.js" type="text/javascript" onload="PB.init()" async></script>
+  <!-- Push bots end -->
+</head>
+
+<style>
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+</style>
+{% block body %}
+
+<body>
+
+
+  {% block nav %}
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">
+
+      <img src="{% static 'imgs/logo4.png' %}" style="width:300px;" loading="lazy" title="ToolsandJobs logo"
+        alt="Toolsandjobs company logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
+        <li class="nav-item dropdown">
+          <a style="color:#FF5733;" class="nav-link dropdown-toggle" id="navbarDrop" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Free Services
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" style="color:red;" href="{% url 'ushort' %}">Try free URL shortener</a>
+            <a class="dropdown-item" href="{% url 'mcq' %}">Objectives Quiz For Prep.</a>
+            <a class="dropdown-item" style="color:green;" href="/mcq/category/FreeCourses">Free learning Courses</a>
+            <a class="dropdown-item" style="color:red;" href="/mcq/category/Jobs">Latest Jobs</a>
+
+          </div>
+        </li>
+        <li class="nav-item">
+          <a style="color:#FF5733;" class="nav-link" href="/mcq/category/Jobs">Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a style="color:#FF5733;" class="nav-link" href="/mcq/category/FreeCourses">Free Courses</a>
+        </li>
+        {% block content5 %}
+        <li class="nav-item">
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'contactus' %}">Contact us</a>
+        </li>
+        {% endblock %}
+        <li class="nav-item">
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'downloadapp' %}">Download our app</a>
+        </li>
+
+
+
+        {% block content4 %}
+        <li class="nav-item">
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'suscribe' %}">Free alerts form</a>
+        </li>
+
+        {% endblock %}
+      </ul>
+
+    </div>
+
+    <a href="{% url 'searchtoolsjobs' %}"><button type="button" class="btn btn-outline-warning"> Search jobs, tools &
+        courses here</button></a>
+  </nav>
+
+  <div class="scrollmenu">
+    <a href="{% url 'ushort' %}">Try new tool: URL Shortener</a>
+
+  </div>
+
+
+
+  {% endblock %}
+
+  <!--jumbotron-->
+  {% block content1 %}
+  <div class="jumbotron jumbotron-fluid"
+    style="background-image: url({% static 'imgs/post-blog-image.png' %}); background-size: 100% 100%;">
+    <div class="container">
+      <h1 class="display-4" style="color:#FF5733;"><b>Education dosen't end!</b></h1>
+      <p class="lead"><b>Explore the world of Education, Because only education matters! Global & Learning Education Hub
+          For Objective Questions</b></p>
+      <hr>
+
+      <div class="row">
+        <div class="col">
+          <center>
+            <a href="https://t.me/toolsjobs"><button type="button" class="btn btn-outline-info">Telegram<i
+                  class="fa fa-telegram" aria-hidden="true"></i>
+              </button></a>
+          </center>
+        </div>
+        <div class="col">
+          <a href="https://chat.whatsapp.com/DVclnLKJGNnDQxnxG7vRfT"><button type="button"
+              class="btn btn-outline-success">Whatsapp<i class="fa fa-whatsapp" aria-hidden="true"></i>
+            </button></a>
+        </div>
+        <div class="col">
+          <a href="https://www.youtube.com/channel/UCAKcKpuKDjXi_Fc4hp-lQPA"><button type="button"
+              class="btn btn-outline-danger">YouTube<i class="fa fa-youtube" aria-hidden="true"></i>
+            </button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+  <!-- ad -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86"
+    data-ad-client="ca-pub-5545425921972474" data-ad-slot="9881218087"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+
+  <!-- collapse que-->
+  {% block content2 %}
+  <div class="container">
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div style="background-color:#00FF7F;" class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link btn-block text-left" style="background-color:#FDEE01 ;" type="button"
+              data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h2 style="color:#FF5733;">What is "ToolsAndJobs- We brings the best jobs, free courses & MCQs
+                preparation"? & what is provides you?(Click to see)</h2>
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <p style="background-color:#F8B52F;" class="card-body">Toolsandjobs is India's best site for anyone who wants
+            get their dream job, getting free courses and learn the objective questions for free.
+            <b><i>You just have to fill the subscribe form for free to get your field jobs offer daily.</i></b>
+          </p><br>
+          <p>One of the main advantage of site is free objective questions or MCQs preparation kits. ToolsandJobs
+            provides you free
+            preparation kits for cracking aptitude, GATE, university online exams, coding skills and more of big
+            companies like Google, Microsoft,
+            Facebook, etc</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  {% endblock %}
+
+  {% block content3 %}
+
+  <div class="container">
+    <div class="card-group">
+      <div class="card border-primary">
+        <center>
+          <img src="{% static 'imgs/free-alerts-for-jobs-courses-tools-toolsandjobs.png' %}"
+            style="height:280px; width:280px;" class="card-img-top"
+            alt="Free notification or alerts for jobs, free courses and tools through Email and Telegram">
+        </center>
+        <div class="card-body">
+          <h5 class="card-title">Free notification</h5>
+          <p class="card-text">ToolsandJobs providing all the students Free notification or alerts for jobs, free
+            courses and tools through Email and Telegram click below button to for daily alerts.</p>
+          <a href="{% url 'suscribe' %}"><button type="button" class="btn btn-primary">Go There</button></a>
+        </div>
+      </div>
+      <div class="card border-secondary">
+        <center>
+          <img src="{% static 'imgs/free-placements-test-toolsandjobs.png' %}" style="height:280px; width:280px;"
+            class="card-img-top"
+            alt="ToolsandJobs is the best platform to make your coding skills, aptitude and other skills">
+        </center>
+        <div class="card-body">
+          <h5 class="card-title">Objective Que. Preparation</h5>
+          <p class="card-text">ToolsandJobs providing free objective questions or multiple choice questions on
+            engineering, programming and more. Global & Learning Education Hub For Objective Questions.</p>
+          <a href="{% url 'mcq' %}"><button type="button" class="btn btn-primary">Go There</button></a>
+        </div>
+      </div>
+      <div class="card border-success">
+        <center>
+          <img src="{% static 'imgs/free-courses-toolsandjobs.png' %}" style="height:280px; width:280px;"
+            class="card-img-top"
+            alt="ToolsandJobs is best platform to find thousands and lakhs of free premium courses for absolutely free">
+        </center>
+        <div class="card-body">
+          <h5 class="card-title">Free courses</h5>
+          <p class="card-text">ToolsandJobs is best platform to find thousands and lakhs of free premium courses for
+            absolutely free. Here you can find premium udemy courses for free. Just click below to get started.</p>
+          <a href="/mcq/category/FreeCourses"> <button type="button" class="btn btn-primary">Go There</button></a>
+        </div>
+      </div>
+    </div>
+    <div style="align:center;">
+      <div class="card-group">
+        <div class="card border-primary">
+          <center>
+            <img src="{% static 'imgs/jobs-free-alerts-toolsandjobs.png' %}" class="card-img-top"
+              style="height:280px; width:280px;" alt="ToolsandJobs is providing jobs through the site with free alerts">
+          </center>
+          <div class="card-body">
+            <h5 class="card-title">Jobs</h5>
+            <p class="card-text">ToolsandJobs is providing jobs through the site with free alerts. It is best way to
+              find your dream job.</p>
+            <a href="/mcq/category/Jobs"> <button type="button" class="btn btn-primary">Go There</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+
+  {% endblock %}
+  {% block footer %}
+
+  <div class="fluid">
+    <!-- Footer -->
+    <footer class="page-footer font-small text-light bg-dark pt-4">
+
+      <!-- Footer Links -->
+      <div class="container text-center text-md-left">
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 style="color:#FF5733;" class="mb-4 font-weight-bold">ToolsPlusJobs</h6>
+            <p>This website is made for helping students to get their dream jobs as well as helps in
+              finding online free courses with learning objective questions for any preparation.
+              <img style="padding-right:80px;" src="{% static 'imgs/logo3.png' %}" alt="Toolsandjobs company logo"
+                width="400" height="76" loading="lazy">
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 style="color:#FF5733;" class="text-uppercase mb-4 font-weight-bold">Free Services</h6>
+            <p>
+              <a href="/mcq/category/Jobs">Latest Jobs</a>
+            </p>
+            <p>
+              <a href="{% url 'mcq' %}">Prep. MCQ's</a>
+            </p>
+            <p>
+              <a href="/mcq/category/FreeCourses">Free learning</a>
+            </p>
+            <p>
+              <a href="{% url 'downloadapp' %}">Download our app</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 style="color:#FF5733;" class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+            <p>
+              <a href="{% url 'suscribe' %}">Email alert for job</a>
+            </p>
+            <p>
+              <a href="{% url 'privacy_policy' %}">Privacy policy</a>
+            </p>
+            <p>
+              <a href="{% url 'about_us' %}">About us</a>
+            </p>
+          </div>
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none">
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 style="color:#FF5733;" class="text-uppercase mb-4 font-weight-bold">Useful Websites</h6>
+            <p>
+              <a href="https://drushyaindia.tech">DrushyaIndia</a>
+            </p>
+            <p>
+              <a href="https://spaceinhindi.in">SpaceInHindi</a>
+            </p>
+            <p>
+              <a href="https://drushyaindia.tech/web-development">Web Development</a>
+            </p>
+          </div>
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none">
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 style="color:#FF5733;" class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p>
+              <i class="fas fa-home mr-3"></i><a href="{% url 'contactus' %}">Contact us</a>
+            </p>
+            <p style="color:#FF5733;">
+              <i class="fas fa-envelope mr-3"></i><a href="mailto:toolsplusjobs@gmail.com"> toolsplusjobs@gmail.com</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Footer links -->
+
+        <hr>
+
+        <!-- Grid row -->
+        <div class="row d-flex align-items-center">
+
+          <!-- Grid column -->
+          <div class="col-md-7 col-lg-8">
+
+            <!--Copyright-->
+            <p style="color:#FF5733;" class="text-center text-md-left">© 2025 Copyright:
+              <a href="{% url 'index' %}">
+                <strong>toolsplusjobs</strong>
+              </a>
+              All rights reserved Version 2.2 Powered By DrushyaIndia
+            </p>
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-5 col-lg-4 ml-lg-0">
+
+            <!-- Social buttons -->
+
+            <div class="text-center text-md-right">
+              <ul style="color:#FF5733;" class="list-unstyled list-inline">Find us on: -
+                <li class="list-inline-item">
+                  <a href="https://www.facebook.com/toolsandjobs/" class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i style="color:#2232F9;" class="fab fa-facebook-f"></i>
+                  </a>
+                </li>
+
+                <li class="list-inline-item">
+                  <a href="https://www.youtube.com/channel/UCAKcKpuKDjXi_Fc4hp-lQPA"
+                    class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i style="color:red;" class="fab fa-youtube"></i>
+                  </a>
+                </li>
+                <!--
+            <li class="list-inline-item">
+              <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" class="btn-floating btn-sm rgba-white-slight mx-1">
+                <i style="color:red;" class="fab fa-google-plus-g"></i>
+              </a>
+            </li>-->
+                <li class="list-inline-item">
+                  <a href="https://in.linkedin.com/in/drushya-india-15bb521a9"
+                    class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i style="color:#000CFF;" class="fab fa-linkedin-in"></i>
+                  </a>
+                </li>
+
+                <li class="list-inline-item">
+                  <a href="https://in.pinterest.com/toolsplusjob/" class="btn-floating btn-sm rgba-white-slight mx-1">
+                    <i style="color:red;" class="fa fa-pinterest"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Footer Links -->
+
+    </footer>
+    <!-- Footer -->
+  </div>
+  {% endblock %}
+
+
+
+
+  <!-- Start of HubSpot Embed Code (popup )-->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/9311080.js"></script>
+  <!-- End of HubSpot Embed Code -->
+
+</body>
+
+</html>

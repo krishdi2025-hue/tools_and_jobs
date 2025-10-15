@@ -1,0 +1,99 @@
+{% extends 'basic.html' %} {% load crispy_forms_tags %} {% load static %}
+
+{% block title %}A Free URL shortener tool with your own words - ToolsandJobs{% endblock %}
+{% block meta %}
+
+<meta name="description" content="Free URL shortener tool with add your own words/characters that's very easy to use, works very fast and secure. Try it now!">
+
+<meta name="og:title" property="og:title" content="A Free URL shortener tool with your own words - ToolsandJobs">
+<meta property="og:url" content="{{request.build_absolute_uri}}" />
+
+<meta property="og:description" content="Free URL shortener tool with add your own words/characters that's very easy to use, works very fast and secure. Try it now!">
+
+<meta property="og:image" content="https://www.toolsandjobs.info/static/imgs/surls/fast-process-free-url-shortener-toolsandjobs.png" />
+<meta property="og:image:secure_url" content="https://www.toolsandjobs.info/static/imgs/surls/fast-process-free-url-shortener-toolsandjobs.png" />
+
+
+<meta property="og:image:type" content="some/mime" />
+<meta property="og:image:width" content="400" />
+<meta property="og:image:height" content="400" />
+
+<meta property="og:image:alt" content="Toolsandjobs-We brings the best jobs, web tools & free courses">
+
+<meta property="og:type" content="website" />
+<link rel="canonical" href="{% url 'index' %}">
+
+
+<!-- meta keywords -->
+<meta name="keywords" content="Toolsandjobs,jobs in India,online jobs,free learning courses,for students,for developers,
+huge recruiters,free email job alerts,">
+
+<!-- author -->
+<meta name="author" content="Tools&Jobs">
+
+{% endblock %}
+
+{% block schema %}
+{% endblock %}
+
+{% block content1 %}
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+
+{% block content3 %}
+<script>
+
+function CopyMe(TextToCopy) {
+  var TempText = document.createElement("input");
+  TempText.value = TextToCopy;
+  document.body.appendChild(TempText);
+  TempText.select();
+
+  document.execCommand("copy");
+  document.body.removeChild(TempText);
+
+  alert("Copied the text: " + TempText.value);
+}
+
+
+</script>
+<!-- ad -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fb+5w+4e-db+86"
+     data-ad-client="ca-pub-5545425921972474"
+     data-ad-slot="9881218087"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                Your shotened URL is {{ message }}<button onclick="CopyMe('{{ message }}')" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top">Copy URL!</button>
+
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</main>
+<!-- ad -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fb+5w+4e-db+86"
+     data-ad-client="ca-pub-5545425921972474"
+     data-ad-slot="9881218087"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+{% endblock %}

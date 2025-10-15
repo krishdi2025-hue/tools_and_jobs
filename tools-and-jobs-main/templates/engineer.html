@@ -1,0 +1,134 @@
+{% extends 'basic.html' %}
+
+{% block title %}Engineering/technical jobs - ToolsandJobs {% endblock %}
+
+{% block meta %}
+
+   <meta name="og:title" property="og:title" content="Engineering/technical jobs - ToolsandJobs ">
+
+
+    <link rel="canonical" href="{% url 'engineering' %}">
+
+  <!-- this is meta desc -->
+  <meta name="description" content="India's best platform to get engineering/technical jobs of all the fields. Here jobs of field from IT,mechanical,electronics and all-Toolsandjobs">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,engineering jobs,India's best job platform,architect jobs,civil jobs,electronics jobs & more,online easy web tools,& more,">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+{% block content1 %}
+<br xmlns="http://www.w3.org/1999/html">
+<div class="container">
+
+<h3 style="color:orange;">People in the engineering field, then it is the best place to engineering jobs
+at good & MNC's companies. Engineer is who that creates and run the world so get your job opportunity.</h3><br>
+   <h3 style="color:red;">We have this type of position included below.</h3>
+    <ul class="list-group list-group-horizontal list-group-flush">
+  <li class="list-group-item">Architect</li>
+  <li class="list-group-item">Civil engg</li>
+  <li class="list-group-item">Software engg</li>
+  <li class="list-group-item">IT engg jobs</li>
+  <li class="list-group-item">Software engg</li>
+
+
+
+</ul>
+    <ul class="list-group list-group-horizontal list-group-flush">
+  <li class="list-group-item">Electronics engg jobs</li>
+  <li class="list-group-item">Electrical engg jobs</li>
+    <li class="list-group-item">Mechanical engg jobs</li>
+  <li class="list-group-item">Computer engg jobs</li>
+  <li class="list-group-item">Others</li>
+
+
+
+</ul><br>
+</div>
+
+
+{% for i in engineer %}
+
+<div class="container">
+
+<div class="accordion card" id="accordionExample" >
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+          <img src="{{i.photo.url}}"  style="width:75px;height:75px;" class="card-img-top" alt="Engineering/technical jobs - ToolsandJobs">
+
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Read more
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body text-white bg-danger">
+        <b style="font-size:20px;"> Job desc</b> <i class="fas fa-prescription-bottle fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.descr|safe}}<br><hr color="black">
+         <b style="font-size:20px;">Location</b> <i class="fas fa-map-marker-alt fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.loc}}<br><hr color="black">
+         <b style="font-size:20px;">Type</b> <i class="fas fa-industry fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.ind_type}}<br><hr color="black">
+         <b style="font-size:20px;">Educ/Eligi.</b> <i class="fas fa-university fa-2x"></i>:&nbsp;&nbsp;{{i.edu_or_elig}}<br><hr color="black">
+         <b style="font-size:20px;">Vaccancies</b> <i class="fab fa-vaadin fa-2x"></i>&nbsp; :&nbsp;&nbsp;{{i.vacc}}<br><hr color="black">
+         <b style="font-size:20px;">Functional area</b> <i class="fas fa-chart-area fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.func_area}}<br><hr color="black">
+         <b style="font-size:20px;">Role</b> <i class="fas fa-user-tag fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.role}}<br><hr color="black">
+         <b style="font-size:20px;">Skills</b> <i class="fas fa-code fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.skil}}<br><hr color="black">
+         <b style="font-size:20px;">Salary</b> <i class="fas fa-money-check-alt fa-2x"></i> &nbsp;:&nbsp;&nbsp;{{i.sal}}<br><hr color="black">
+         <b style="font-size:20px;">Experience</b> <i class="fas fa-briefcase fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.exper}}<br><hr color="black">
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="card-body text-white bg-warning">
+      <h5 class="card-title">{{i.head}}</h5><hr color="white">
+    <p class="card-text">{{i.desc|safe}}</p>
+    <a href="{{i.url}}" class="btn btn-primary">Go there</a><hr>
+
+      <!-- social share-->
+      <i style="color:black;" class="far fa-share-square fa-2x">Share this:</i>
+      <a href="https://api.whatsapp.com/send?text={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head}}&submit=" data-action="share/whatsapp/share"><i style="color:#1BFF00;" class="fab fa-whatsapp-square fa-2x"></i></a>
+
+     <script async src="https://telegram.org/js/telegram-widget.js?12" data-telegram-share-url="{{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head}}&submit=" data-comment="{{i.head}}"></script>
+
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head}}&submit=">
+<i style="color:#0049FF;" class="fab fa-facebook-square fa-2x"></i></a>
+
+      <a href="https://twitter.com/home?status={{i.head}}%20{{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head}}&submit=">
+        <i style="color:#00B9FF;" class="fab fa-twitter-square fa-2x"></i></a>
+
+      <a href="https://plus.google.com/share?url={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head}}&submit="><i style="color:#FF1300;" class="fab fa-google-plus-square fa-2x"></i></a>
+
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head}}&submit=&title={{i.head}}&summary={{i.head}}&source={{ request.get_host }}">
+<i style="color:#0800FF;" class="fab fa-linkedin fa-2x"></i></a>
+
+      <a href="http://www.reddit.com/submit?url={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head}}&submit=&title={{i.head}}."><i style="color:#FF000C;" class="fab fa-reddit-square fa-2x"></i></a>
+
+
+      <a data-pin-do="buttonBookmark" href="//www.pinterest.com/pin/create/button/"><img src="{{ i.photo.url }}" /></a>
+
+  </div>
+  </div>
+
+
+</div>
+<br>
+{% endfor %}
+
+
+
+
+{% endblock %}

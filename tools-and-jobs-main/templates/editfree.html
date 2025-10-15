@@ -1,0 +1,98 @@
+{% extends 'basic.html' %}
+
+{% block title %}Editors free web tools - Toolsandjobs{% endblock %}
+
+{% block meta %}
+        <meta name="og:title" property="og:title" content="Editors free web tools - Toolsandjobs">
+
+
+    <link rel="canonical" href="{% url 'editfree' %}">
+
+  <!-- this is meta desc -->
+  <meta name="description" content="Here you will find free editors web tools this will help in your editing in your photos,videos,content,free draw and more. Tools&jobs">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,free web tools,free editors tools,free editors app,website,and more">
+
+  <!-- author -->
+  <meta name="author" content="Tools&Jobs">
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+{% block content1 %}
+<br>
+<div class="container">
+
+<h1 style="color:#FF5733">You are viewing free editor tools</h1><br>
+</div>
+
+
+{% for i in edit %}
+
+<div class="container">
+
+<div class="accordion card" id="accordionExample" >
+  <div class="card ">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+
+          <img src="{{i.img3.url}}"  style="width:75px;height:75px;" class="card-img-top" alt="Editors free web tools - Toolsandjobs">
+
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Read more
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body text-white bg-warning">
+            {{i.text3|safe}}
+      </div>
+    </div>
+  </div>
+  <div class="card-body text-white bg-success">
+    <h5 class="card-title">{{i.title3}}</h5>
+    <p class="card-text">{{i.tex3|safe}}</p>
+    <a href="{{i.link3}}" class="btn btn-primary">Go there</a><hr>
+
+     <!-- social share-->
+      <i style="color:black;" class="far fa-share-square fa-2x">Share this:</i>
+      <a href="https://api.whatsapp.com/send?text={{ request.get_host }}{% url 'engifree' %}search/?query1={{i.title3}}&submit=" data-action="share/whatsapp/share"><i style="color:#1BFF00;" class="fab fa-whatsapp-square fa-2x"></i></a>
+
+
+      <script async src="https://telegram.org/js/telegram-widget.js?12" data-telegram-share-url="{{ request.get_host }}{% url 'engifree' %}search/?query1={{i.title3}}&submit=" data-comment="{{i.title3}}"></script>
+
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.get_host }}{% url 'engifree' %}search/?query1={{i.title3}}&submit=">
+<i style="color:#0049FF;" class="fab fa-facebook-square fa-2x"></i></a>
+
+      <a href="https://twitter.com/home?status={{i.title3}}%20{{ request.get_host }}{% url 'engifree' %}search/?query1={{i.title3}}&submit=">
+        <i style="color:#00B9FF;" class="fab fa-twitter-square fa-2x"></i></a>
+
+      <a href="https://plus.google.com/share?url={{ request.get_host }}{% url 'engifree' %}search/?query1={{i.title3}}&submit="><i style="color:#FF1300;" class="fab fa-google-plus-square fa-2x"></i></a>
+
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.get_host }}{% url 'engifree' %}search/?query1={{i.title3}}&submit=&title={{i.title3}}&summary={{ i.title3 }}&source={{ request.get_host }}">
+<i style="color:#0800FF;" class="fab fa-linkedin fa-2x"></i></a>
+
+      <a href="http://www.reddit.com/submit?url={{ request.get_host }}{% url 'engifree' %}search/?query1={{i.title3}}&submit=&title={{i.title3}}."><i style="color:#FF000C;" class="fab fa-reddit-square fa-2x"></i></a>
+
+
+      <a data-pin-do="buttonBookmark" href="//www.pinterest.com/pin/create/button/"><img src="{{ i.img3.url }}" /></a>
+
+  </div>
+  </div>
+
+
+</div>
+
+<br>
+{% endfor %}
+
+
+
+{% endblock %}

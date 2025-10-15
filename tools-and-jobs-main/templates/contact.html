@@ -1,0 +1,74 @@
+{% extends 'basic.html' %}
+
+{% block title %}Contact us for complaints,request or ads - Toolsandjobs{% endblock %}
+
+{% block meta %}
+            <meta name="og:title" property="og:title" content="Contact us for complaints,request or ads - Toolsandjobs">
+
+
+    <link rel="canonical" href="{% url 'contactus' %}">
+
+  <!-- this is meta desc -->
+  <meta name="description" content="This is the contact form for contacting us for any complaints, request or for advertising purpose. Tools&jobs team will approach you via gmail/email for your requirement.">
+
+<!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,jobs in India,online jobs,communication jobs,Journalist,Copywriter,Social media manager,Brand manager,more">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+{% endblock %}
+
+
+{% block content5 %}
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+{% block content1 %}
+
+
+
+
+<div class="container">{% load static %}
+    <h1 style="color:#FF5733;">This is contact form</h1>
+
+
+    <img alt="Contact us for complaints,request or ads - Toolsandjobs" style='height: 100%; width: 100%; object-fit: contain' src="{% static 'imgs/contact-us-tools&jobs.png' %}">
+    <div class="alert alert-success" role="alert">
+{% for message in messages %}
+   Thank you {{name.full_name}} {{message}}
+    {% endfor %}
+</div>
+<form action="{% url 'contactus' %}" method="POST">{% csrf_token %}
+
+  <div class="form-group">
+    <label>Full name</label>
+    <input type="text" name="full_name" class="form-control"  >
+  </div>
+
+  <div class="form-group">
+    <label>Email address</label>
+    <input type="email" name="email1" class="form-control" aria-describedby="emailHelp">
+    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label>Message</label>
+    <textarea class="form-control" name="msg"  rows="3"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form><hr color="black">
+
+    <h4>What this form for?</h4><br>
+  <h6>
+      This is contact form for contacting to <a href="{{ request.get_host }}"> ToolsPlusJobs </a> for any
+      complaints, any changes, any website improvement. And you can fill this form for paid ad promotion with us also.
+  </h6><br>
+</div>
+
+
+{% endblock %}

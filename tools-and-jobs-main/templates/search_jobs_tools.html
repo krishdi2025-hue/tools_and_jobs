@@ -1,0 +1,41 @@
+{% extends 'basic.html' %}
+
+{% block title %}Search - toolsandjobs{% endblock %}
+
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+
+{% block content1 %}
+<br>
+<div class="container">
+
+
+    <h1 style="color:#FF5733;">Search - toolsandjobs</h1>
+    <br>
+    {% for message in messages %}
+    {{message}}
+    {% endfor %}
+
+<form method="GET" action="{% url 'search1' %}" class="form-inline ">
+      <input class="form-control mr-sm-2" name="query" type="search" placeholder="Search jobs here you want" aria-label="Search">
+      <button name="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+          <small class="form-text text-muted ">Search job by <strong>location, role, company name, industry type, func area, education/eligibility, employment type, etc</strong></small>
+<br>
+
+    <form method="GET" action="{% url 'search' %}" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" name="query1" type="search" placeholder="Search free courses, free tools here" aria-label="Search">
+      <button name="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+    </form>
+    <small class="form-text text-muted ">Search any web <strong>tools and free courses</strong> here for students, engineer, medical, etc</small>
+<br>
+
+{% endblock %}
+
+</div>

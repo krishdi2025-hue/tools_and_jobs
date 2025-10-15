@@ -1,0 +1,68 @@
+{% extends 'test-list.html' %}
+
+{% block title %}List of {{catlist.cat}} for your preparation - ToolsandJobs{% endblock %}
+{% block meta %}{% load static %}
+
+    <meta name="og:title" property="og:title" content="List of {{catlist.cat}} for your preparation of exams - ToolsandJobs">
+
+  <meta name="og:url" property=”og:url” content=”{{request.build_absolute_uri}}” />
+
+    <meta property="og:description" content="List of {{catlist.cat}} for your preparation of exams - ToolsandJobs">
+
+
+
+  <link rel="canonical" href="{% url 'mcq' %}">
+
+
+
+  <!-- this is meta desc -->
+  <meta name="description" content="List of {{catlist.cat}} for your preparation of exams - ToolsandJobs">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="List of {{catlist.cat}} for your preparation of exams - ToolsandJobs">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+
+  {% endblock %}
+
+{% block content1 %}
+
+<div class="container">
+    <br><h2 style="color:#FF5733;">List of {{catlist.cat}}</h2><hr>
+  {% for post in catlist.mcqs %}
+<div class="card border-info" style="align:right;">
+  <div class="card-header h2" style="color:#FF5733;">{{ post.titles1 }}</div>
+  <div class="card-body text-dark">
+  <p class="card-text text-muted"><img src="{% static 'imgs/created-on-toolsandjobs.png' %}" width="20px" height="20px"> {{ post.created_on1}} </p>
+    <p class="card-text">{{post.contents1|slice:":60"|safe }}</p>
+    <a href="{% url 'test_detail' post.slug1  %}" class="btn btn-primary">View More &rarr;</a>
+  </div>
+</div><br>
+  {% endfor %}
+  {% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>&nbsp;&nbsp;
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>&nbsp;&nbsp;
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>&nbsp;&nbsp;
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+  </div>
+
+
+
+{% endblock %}

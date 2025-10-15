@@ -1,0 +1,126 @@
+{% extends 'basic.html' %}
+
+{% block title %}Sales jobs in India - ToolsandJobs {% endblock %}
+
+{% block meta %}
+      <meta name="og:title" property="og:title" content="Sales jobs in India - ToolsandJobs ">
+
+
+    <link rel="canonical" href="{% url 'sales' %}">
+
+  <!-- this is meta desc -->
+  <meta name="description" content="Best platform to get your sales jobs with free alerts. Here you can jobs like Sales associate,Account executive,VP of sales,Regional sales manager jobs in India for freshers also.">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,sales jobs,sales job description,sales jobs in India, free alerts for sales job,& more,">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+{% block content1 %}
+<br xmlns="http://www.w3.org/1999/html">
+<div class="container">
+
+<h3 style="color:orange;">The career path in sales includes working to sell items or services to individual
+ and businesses. People know the depth knowledge ofwhat they are selling.</h3><br>
+    <h3 style="color:red;">We have this type of position included below.</h3>
+    <ul style="color:#FF5733;" class="list-group list-group-horizontal list-group-flush">
+  <li class="list-group-item">Sales associate</li>
+  <li class="list-group-item">Account executive</li>
+  <li class="list-group-item">VP of sales</li>
+    <li class="list-group-item">Sales development manager</li>
+
+
+</ul>
+    <ul style="color:#FF5733;" class="list-group list-group-horizontal list-group-flush">
+  <li class="list-group-item">Regional sales manager</li>
+
+
+</ul><br>
+</div>
+
+
+{% for i in sal %}
+
+<div class="container">
+
+<div class="accordion card" id="accordionExample" >
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+          <img src="{{i.photo8.url}}"  style="width:75px;height:75px;" class="card-img-top" alt="Sales jobs in India - ToolsandJobs ">
+
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Read more
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body text-white bg-danger">
+        <b style="font-size:20px;"> Job desc</b> <i class="fas fa-prescription-bottle fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.descr8|safe}}<br><hr color="black">
+         <b style="font-size:20px;">Location</b> <i class="fas fa-map-marker-alt fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.loc8}}<br><hr color="black">
+         <b style="font-size:20px;">Type</b> <i class="fas fa-industry fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.ind_type8}}<br><hr color="black">
+         <b style="font-size:20px;">Educ/Eligi.</b> <i class="fas fa-university fa-2x"></i>:&nbsp;&nbsp;{{i.edu_or_elig8}}<br><hr color="black">
+         <b style="font-size:20px;">Vaccancies</b> <i class="fab fa-vaadin fa-2x"></i>&nbsp; :&nbsp;&nbsp;{{i.vacc8}}<br><hr color="black">
+         <b style="font-size:20px;">Functional area</b> <i class="fas fa-chart-area fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.func_area8}}<br><hr color="black">
+         <b style="font-size:20px;">Role</b> <i class="fas fa-user-tag fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.role8}}<br><hr color="black">
+         <b style="font-size:20px;">Skills</b> <i class="fas fa-code fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.skil8}}<br><hr color="black">
+         <b style="font-size:20px;">Salary</b> <i class="fas fa-money-check-alt fa-2x"></i> &nbsp;:&nbsp;&nbsp;{{i.sal8}}<br><hr color="black">
+         <b style="font-size:20px;">Experience</b> <i class="fas fa-briefcase fa-2x"></i>&nbsp;:&nbsp;&nbsp;{{i.exper8}}<br><hr color="black">
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="card-body text-white bg-warning">
+      <h5 class="card-title">{{i.head8}}</h5><hr color="white">
+    <p class="card-text">{{i.desc8|safe}}</p>
+    <a href="{{i.url8}}" class="btn btn-primary">Go there</a><hr>
+
+      <!-- social share-->
+      <i style="color:black;" class="far fa-share-square fa-2x">Share this:</i>
+      <a href="https://api.whatsapp.com/send?text={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head8}}&submit=" data-action="share/whatsapp/share"><i style="color:#1BFF00;" class="fab fa-whatsapp-square fa-2x"></i></a>
+
+      <script async src="https://telegram.org/js/telegram-widget.js?12" data-telegram-share-url="{{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head8}}&submit=" data-comment="{{i.head8}}"></script>
+
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head8}}&submit=">
+<i style="color:#0049FF;" class="fab fa-facebook-square fa-2x"></i></a>
+
+      <a href="https://twitter.com/home?status={{i.head8}}%20{{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head8}}&submit=">
+        <i style="color:#00B9FF;" class="fab fa-twitter-square fa-2x"></i></a>
+
+      <a href="https://plus.google.com/share?url={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head8}}&submit="><i style="color:#FF1300;" class="fab fa-google-plus-square fa-2x"></i></a>
+
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head8}}&submit=&title={{i.head8}}&summary={{i.head8}}&source={{ request.get_host }}">
+<i style="color:#0800FF;" class="fab fa-linkedin fa-2x"></i></a>
+
+      <a href="http://www.reddit.com/submit?url={{ request.get_host }}{% url 'jobs' %}search1/?query={{i.head8}}&submit=&title={{i.head8}}."><i style="color:#FF000C;" class="fab fa-reddit-square fa-2x"></i></a>
+
+
+      <a data-pin-do="buttonBookmark" href="//www.pinterest.com/pin/create/button/"><img src="{{ i.photo8.url }}" /></a>
+
+  </div>
+  </div>
+
+
+</div>
+<br>
+{% endfor %}
+
+
+
+
+{% endblock %}

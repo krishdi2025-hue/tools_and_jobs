@@ -1,0 +1,98 @@
+{% extends 'basic.html' %}
+{% load cloudinary %}
+{% block title %}Educational Web Tools For Students - Toolsandjobs {% endblock %}
+
+{% block meta %}
+   <meta name="og:title" property="og:title" content="Educational Web Tools For Students - Toolsandjobs  ">
+
+
+    <link rel="canonical" href="{% url 'engifree' %}">
+
+
+  <!-- this is meta desc -->
+  <meta name="description" content="Best web tools for engineers specially created for engineers to help them in their study or in work or other.-Tools&jobs">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,engineering free tools,free web tools,online easy web tools,& more,">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+{% block content1 %}
+<br>
+<div class="container">
+
+<h1 style="color:#FF5733;">You are viewing free engineering tools</h1><br>
+</div>
+
+
+{% for i in engi %}
+
+<div class="container">
+
+<div class="accordion card" id="accordionExample" >
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+          <img src="{{i.img.url}}"  style="width:75px;height:75px;" class="card-img-top" alt="Engineering free web tools - Toolsandjobs ">
+
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Read more
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body text-white bg-warning">
+        {{i.text|safe}}
+      </div>
+    </div>
+  </div>
+  <div class="card-body text-white bg-success">
+    <h5 class="card-title">{{i.title}}</h5>
+    <p class="card-text">{{i.tex|safe}}</p>
+    <a href="{{i.link}}" class="btn btn-primary">Go there</a><hr>
+
+    <!-- social share-->
+      <i style="color:black;" class="far fa-share-square fa-2x">Share this:</i>
+      <a href="https://api.whatsapp.com/send?text={{ request.build_absolute_uri }}search/?query1={{i.title}}&submit=" data-action="share/whatsapp/share"><i style="color:#1BFF00;" class="fab fa-whatsapp-square fa-2x"></i></a>
+
+
+      <script async src="https://telegram.org/js/telegram-widget.js?12" data-telegram-share-url="{{ request.build_absolute_uri }}search/?query1={{i.title}}&submit=" data-comment="{{i.title}}"></script>
+
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}search/?query1={{i.title}}&submit=&t={{i.title}}">
+<i style="color:#0049FF;" class="fab fa-facebook-square fa-2x"></i></a>
+
+      <a href="https://twitter.com/home?status={{i.head4}}%20{{ request.build_absolute_uri }}search/?query1={{i.title}}&submit=">
+        <i style="color:#00B9FF;" class="fab fa-twitter-square fa-2x"></i></a>
+
+      <a href='https://plus.google.com/share?url={{ request.build_absolute_uri }}search/?query1={{i.title}}&submit='><i style="color:#FF1300;" class="fab fa-google-plus-square fa-2x"></i></a>
+
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}search/?query1={{i.title}}&submit=&title={{i.title}}&summary={{i.title}}&source={{ request.get_host }}">
+<i style="color:#0800FF;" class="fab fa-linkedin fa-2x"></i></a>
+
+      <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}search/?query1={{i.title}}&submit=&title={{i.title}}."><i style="color:#FF000C;" class="fab fa-reddit-square fa-2x"></i></a>
+
+
+      <a data-pin-do="buttonBookmark" href="//www.pinterest.com/pin/create/button/"><img src="{{ i.img.url }}" /></a>
+
+  </div>
+  </div>
+
+
+</div>
+<br>
+
+
+{% endfor %}
+
+
+
+{% endblock %}

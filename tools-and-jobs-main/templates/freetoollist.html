@@ -1,0 +1,145 @@
+{% extends 'basic.html' %}
+
+{% block title %}Free web tools - Toolsandjobs{% endblock %}
+
+
+
+{% block meta %}
+     <meta name="og:title" property="og:title" content="Free web tools - Toolsandjobs">
+
+
+    <link rel="canonical" href="{% url 'freetoollist' %}">
+
+  <!-- this is meta desc -->
+  <meta name="description" content="Best & free web tools list contains Engineering tools,Developers tools,Educational tools,Editor tools,File handling tools,Free learning with free access.-Toolsandjobs">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs,free web tools,free tools list,Engineering tools,Developers tools,Educational tools,Editor tools,File handling tools,Free learning,& more,-Tools&jobs ">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block content3 %}
+{% endblock %}
+
+{% block content1 %}
+<br>
+<div class="container">
+    <center>
+
+
+    <h1 style="color:#FF5733;">
+    This is category wise list of free tools avilable
+    </h1>
+    </center><br>
+    <div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4">
+    <div class="card text-white bg-primary">{% load static %}
+      <img style="height:300px;" src="{% static 'imgs/engineer-free-paid-tools-plus-jobs.jpg' %}" class="card-img-top" alt="Free web tools - Toolsandjobs">
+      <div class="card-body">
+        <h5 class="card-title">Click to get free online engineering tools</h5>
+        <p class="card-text">Click the below button for getting free engineering tools that will help you in all the engineering branches. This will help you in your study.</p>
+          <a href="{% url 'engifree' %}" class="btn btn-success">Go There
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-broadcast-pin" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 0 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM6 8a2 2 0 1 1 2.5 1.937V15.5a.5.5 0 0 1-1 0V9.937A2 2 0 0 1 6 8z"/>
+          </svg>
+          </a>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card text-light bg-success">
+      <img style="height:300px;" src="{% static 'imgs/deve-free-paid-tools-plus-jobs.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Click to get free online developer tools</h5>
+        <p class="card-text">Click the below button for getting free developer tools that will help you in your coding of any programming languages. Don't matter if you don't know any languages then you can see here from scratch. All HTML,CSS,JAVA,Python,C,C++,Ruby,etc and all.</p>
+          <a href="{% url 'devfree' %}" class="btn btn-primary">Go There
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-code" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+  <path fill-rule="evenodd" d="M8.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 8 8.646 6.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 8l1.647-1.646a.5.5 0 0 0 0-.708z"/>
+          </svg>
+          </a>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col mb-4">
+    <div class="card text-white bg-danger">
+      <img style="height:300px;" src="{% static 'imgs/educational-free-paid-tools-plus-jobs.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Click to get free online educational tools</h5>
+        <p class="card-text">Click the below button for getting free educational tools that will help for childrens or class 1 to 12. This will help you in your study. Many tools in this.</p>
+          <a href="{% url 'edufree' %}" class="btn btn-warning">Go There
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-diamond" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>
+  <path fill-rule="evenodd" d="M8.361 1.17a.51.51 0 0 0-.722 0L4.766 4.044 8 7.278l3.234-3.234L8.361 1.17zm3.595 3.596L8.722 8l3.234 3.234 2.873-2.873c.2-.2.2-.523 0-.722l-2.873-2.873zm-.722 7.19L8 8.722l-3.234 3.234 2.873 2.873c.2.2.523.2.722 0l2.873-2.873zm-7.19-.722L7.278 8 4.044 4.766 1.17 7.639a.511.511 0 0 0 0 .722l2.874 2.873zM6.917.45a1.531 1.531 0 0 1 2.166 0l6.469 6.468a1.532 1.532 0 0 1 0 2.166l-6.47 6.469a1.532 1.532 0 0 1-2.165 0L.45 9.082a1.531 1.531 0 0 1 0-2.165L6.917.45z"/>
+          </svg>
+          </a>
+
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card text-white bg-warning">
+      <img style="height:300px;" src="{% static 'imgs/editing-free-paid-tools-plus-jobs.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Click to get free online editors</h5>
+        <p class="card-text">Click the below button for getting free online editors tools that will help you for editing your photos, videos, posters, business cards and more.</p>
+          <a href="{% url 'editfree' %}" class="btn btn-danger">Go There
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+          </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-2">
+  <div class="col mb-4">
+    <div class="card text-white bg-info">
+      <img style="height:300px;" src="{% static 'imgs/files-free-paid-tools-plus-jobs.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Click to get free online file handline tools</h5>
+        <p class="card-text">Click the below button for getting free online file handling tools that will help you for handling your files like PDF's, word, ppt, excel, xml, html and many more.</p>
+                <a href="{% url 'filefree' %}" class="btn btn-secondary">Go There
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-medical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+  <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
+  <path fill-rule="evenodd" d="M7 5a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L8 7l.549.317a.5.5 0 1 1-.5.866L7.5 7.866V8.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L6 7l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V5.5A.5.5 0 0 1 7 5zm-2 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                </a>
+
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card text-white bg-secondary">
+      <img style="height:300px;" src="{% static 'imgs/free-courses-free-paid-tools-plus-jobs.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Online free courses</h5>
+        <p class="card-text">Click the below button for getting free online learning sites from which you learn what you want. Programming, maths, aptitude, IT courses and more.</p>
+                <a href="{% url 'learnfree' %}" class="btn btn-info">Go There
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-aspect-ratio" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+  <path fill-rule="evenodd" d="M2 4.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H3v2.5a.5.5 0 0 1-1 0v-3zm12 7a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H13V8.5a.5.5 0 0 1 1 0v3z"/>
+                </svg>
+                </a>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+</div>
+{% endblock %}

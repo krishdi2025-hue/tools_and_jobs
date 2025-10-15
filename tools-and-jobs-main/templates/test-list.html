@@ -1,0 +1,219 @@
+{% extends 'basic.html' %}
+
+{% block title %}Global & Learning Education Hub for objective questions - ToolsandJobs{% endblock %}
+{% block meta %}{% load static %}
+
+    <meta name="og:title" property="og:title" content="Global & Learning Education Hub for objective questions - ToolsandJobs">
+
+  <meta name="og:url" property=”og:url” content=”{{request.build_absolute_uri}}” />
+
+  <meta name="og:type" property=”og:type” content=”Education/Website” />
+
+  <link rel="canonical" href="{% url 'mcq' %}">
+
+
+
+
+  <!-- this is meta desc -->
+  <meta name="description" content="ToolsandJobs Explore the world of Education, Because only education matters! Engineering, Development, Educational MCQ's for all. Global & Learning Hub">
+
+  <!-- meta keywords -->
+  <meta name="keywords" content="Toolsandjobs, tech mcq's,educational mcq's,engineering mcq's,developer mcq's,world of mcq's,">
+
+  <!-- author -->
+  <meta name="author" content="ToolsandJobs">
+
+  {% endblock %}
+{% block schema %}
+  <!-- scema markup -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.toolsandjobs.info/"
+  },
+  "headline": "Tools and jobs - We brings best jobs, courses and tools for you, With free alerts",
+  "description": "Tools&jobs is India's best site for students, developers, jobseekers, for free learning courses. Here peoples come & search their dream job, courses & tools.",
+  "image": "https://www.toolsandjobs.info/static/imgs/logo3.png",
+  "author": {
+    "@type": "Person",
+    "name": "ToolsandJobs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ToolsandJobs",
+    "logo": {
+      "@type": "ImageObject",
+      "url": ""
+    }
+  },
+  "datePublished": ""
+}
+</script>
+{% endblock %}
+{% block nav %}
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'index' %}">
+
+    <img src="{% static 'imgs/logo4.png' %}" style="width:300px;"  loading="lazy" title="ToolsandJobs logo" alt="Toolsandjobs company logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+        {% block mcqcat %}
+      <li class="nav-item dropdown">
+        <a style="color:#FF5733;" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		MCQ's for exams
+		</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/mcq/category/firstyear">First Year</a>
+          <a class="dropdown-item" href="/mcq/category/secondyear">Second Year</a>
+          <a class="dropdown-item" href="/mcq/category/thirdyear">Third Year</a>
+          <a class="dropdown-item" href="/mcq/category/lastyear">Fourth Year</a>
+          <a class="dropdown-item" style="color:green;" href="/mcq/category/Jobs">Latest Jobs</a>
+          <a class="dropdown-item" style="color:red;" href="/mcq/category/FreeCourses">Latest Jobs</a>
+
+        </div>
+      </li>
+        {% endblock %}
+        <li class="nav-item">
+          <a style="color:#FF5733;" class="nav-link" href="/mcq/category/Jobs">
+      Latest Jobs
+      </a>
+        </li>
+        <li class="nav-item">
+          <a style="color:#FF5733;" class="nav-link" href="/mcq/category/FreeCourses">
+      Free courses
+      </a>
+        </li>
+      <li class="nav-item">
+        <a style="color:#FF5733;" class="nav-link" href="{% url 'downloadapp' %}">
+		Download App
+		</a>
+      </li>
+        {% block content5 %}
+      <li class="nav-item">
+        <a style="color:#FF5733;" class="nav-link" href="{% url 'contactus' %}">Contact us</a>
+      </li>
+        {% endblock %}
+	  {% block content4 %}
+	  <button type="button" style="left-margin:20px;" class="btn btn-warning">
+      <li class="nav-item">
+        <a style="color:white;" class="nav-link" href="{% url 'suscribe' %}">Free alerts form</a>
+      </li>
+	  </button>
+      {% endblock %}
+
+	</ul>
+
+  </div>
+
+</nav>
+<div class="scrollmenu">
+  <a href="{% url 'ushort' %}">Try new tool: URL Shortener</a>
+
+</div>
+
+{% endblock %}
+{% block content1 %}
+
+<div class="jumbotron jumbotron-fluid" style="background-image: url({% static 'imgs/preparation-blog-image.png' %}); background-size: 100% 100%;">
+  <div class="container">
+    <h1 class="display-4" style="color:#FF5733;"><b>Education dosen't end!</b></h1>
+    <p class="lead"><b>Explore the world of Education, Because only education matters! Global & Learning Education Hub For Objective Questions</b></p>
+    <form action="{% url 'searchmcq' %}" method="GET"  class="form-inline ">
+      <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search question,topic..." aria-label="Search">
+      <button name="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form><hr>
+
+  <div class="row">
+    <div class="col">
+<center>
+<a href="https://t.me/toolsjobs"><button type="button" class="btn btn-outline-info">Telegram<i class="fa fa-telegram" aria-hidden="true"></i>
+</button></a>
+</center>
+      </div>
+    <div class="col">
+<a href="https://chat.whatsapp.com/DVclnLKJGNnDQxnxG7vRfT"><button type="button" class="btn btn-outline-success">Whatsapp<i class="fa fa-whatsapp" aria-hidden="true"></i>
+</button></a>
+       </div>
+    <div class="col">
+<a href="https://www.youtube.com/channel/UCAKcKpuKDjXi_Fc4hp-lQPA"><button type="button" class="btn btn-outline-danger">YouTube<i class="fa fa-youtube" aria-hidden="true"></i>
+</button></a>
+       </div>
+  </div>
+</div>
+  </div>
+<div class="container">
+  <a class="btn btn-info" href="/mcq/category/firstyear" role="button">First year</a>&nbsp;
+  <a class="btn btn-info" href="/mcq/category/secondyear" role="button">Second year</a>&nbsp;
+  <a class="btn btn-info" href="/mcq/category/thirdyear" role="button">Third year</a>&nbsp;
+  <a class="btn btn-info" href="/mcq/category/lastyear" role="button">Fourth year</a>
+  <a class="btn btn-danger" href="/mcq/category/Jobs" role="button">Latest Jobs</a>
+  <a class="btn btn-success" href="/mcq/category/FreeCourses" role="button">Free Courses</a>
+</div><br>
+{% endblock %}
+{% block content2 %}
+<div class="container">
+<div class="card border-info" style="align:right;">
+    <!--ad-->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fb+5w+4e-db+86"
+     data-ad-client="ca-pub-5545425921972474"
+     data-ad-slot="9881218087"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<br>
+  {% for post in techmcq_list %}
+<div class="card border-info" style="align:right;">
+  <div class="card-header h2" style="color:#FF5733;">{{ post.titles1 }}</div>
+  <div class="card-body text-dark">
+  <p class="card-text text-muted"><img src="{% static 'imgs/created-on-toolsandjobs.png' %}" width="20px" height="20px"> {{ post.created_on1}} </p>
+    <p class="card-text">{{post.contents1|slice:":60"|safe }}</p>
+    <a href="{% url 'test_detail' post.slug1  %}" class="btn btn-primary">View More &rarr;</a>
+  </div>
+</div><br>
+  {% endfor %}
+
+
+{% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>&nbsp;&nbsp;
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>&nbsp;&nbsp;
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>&nbsp;&nbsp;
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+
+  </div>
+
+
+{% endblock %}
+
+
+{% block content3 %}
+{% endblock %}
