@@ -36,8 +36,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('webtools1.urls')),
     path('signup/', include('signup.urls')),
-    # login app
-    path('login/', include('login.urls')),
+   
     path('engifree/', include('engifree.urls')),
     path('jobs/', include('jobs.urls')),
     path('mcq/', include('techmcq.urls')),
@@ -47,6 +46,10 @@ urlpatterns = [
     path('robots.txt',TemplateView.as_view(template_name = 'robots.txt', content_type = 'text/plain'),),
     path('ads.txt', TemplateView.as_view(template_name='ads.txt', content_type='text/plain'), ),
     path('ckeditor/',include('ckeditor_uploader.urls')),
+
+    path('register/', include('register.urls')),
+    # login app
+    path('login/', include('login.urls')),
 
               ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

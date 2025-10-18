@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
-import django_heroku
+try:
+    import django_heroku
+except Exception:
+    django_heroku = None
 from pathlib import Path
 from datetime import timedelta
 import cloudinary
@@ -49,18 +52,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
-    'ckeditor','ckeditor_uploader',
-    # krish added this for a crispy_forms,crispy_bootstrap4 error when click on Free Services in try free url shortener  
-    'crispy_bootstrap4',
+    # optional third-party apps (added below if available)
     "rest_framework", # for jwt auth
-    'URLshortner', 'crispy_forms',
+    'URLshortner',
     'login',
-
+    'register',
 
 
 ]
+
+# Try to import optional third-party apps and append them only if available.
+optional_third_party = [
+    ('cloudinary_storage', 'cloudinary_storage'),
+    ('cloudinary', 'cloudinary'),
+    ('ckeditor', 'ckeditor'),
+    ('ckeditor_uploader', 'ckeditor_uploader'),
+    ('crispy_bootstrap4', 'crispy_bootstrap4'),
+    ('crispy_forms', 'crispy_forms'),
+]
+
+for module_name, app_label in optional_third_party:
+    try:
+        __import__(module_name)
+        INSTALLED_APPS.append(app_label)
+    except Exception:
+        # missing optional dependency; continue without adding the app
+        pass
 
 # jwt auth settings
 
@@ -71,8 +88,8 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
@@ -89,7 +106,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 MIDDLEWARE = [
 # SecurityMiddleware must be listed before other middleware
     'django.middleware.security.SecurityMiddleware',
-    'django.middleware.security.SecurityMiddleware',
+    # removed duplicate SecurityMiddleware (was listed twice)
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -221,7 +238,9 @@ EMAIL_HOST_PASSWORD = 'Shashanka@123'
 
 
 
-# Activate Django-Heroku.
 django_heroku.settings(locals())
+# Activate Django-Heroku if package is available.
+if django_heroku:
+    django_heroku.settings(locals())
 
 
