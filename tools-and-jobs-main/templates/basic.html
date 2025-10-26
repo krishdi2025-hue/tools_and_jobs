@@ -254,7 +254,17 @@ huge recruiters,free email job alerts,">
           <a style="color:#FF5733;" class="nav-link" href="{% url 'downloadapp' %}">Download our app</a>
         </li>
 
+        <li class="nav-item"> <!-- access this using name in url-->
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'login' %}">
+            Company-Login
+          </a>
+        </li>
 
+        <li class="nav-item"> <!-- access this using name in url-->
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'company_register' %}">
+            Company-Register
+          </a>
+        </li>
 
         {% block content4 %}
         <li class="nav-item">
@@ -289,21 +299,21 @@ huge recruiters,free email job alerts,">
           For Objective Questions</b></p>
       <hr>
 
-      <div class="row">
-        <div class="col">
-          <center>
-            <a href="https://t.me/toolsjobs"><button type="button" class="btn btn-outline-info">Telegram<i
-                  class="fa fa-telegram" aria-hidden="true"></i>
-              </button></a>
-          </center>
+      <div class="row" style="justify-content: space-between;">
+        <div class="col" style="flex-grow: 0;">
+
+          <a href="https://t.me/toolsjobs"><button type="button" style="width: 20vh;"
+              class="btn btn-outline-info">Telegram<i class="fa fa-telegram" aria-hidden="true"></i>
+            </button></a>
+
         </div>
-        <div class="col">
-          <a href="https://chat.whatsapp.com/DVclnLKJGNnDQxnxG7vRfT"><button type="button"
+        <div class="col" style="flex-grow: 0;">
+          <a href="https://chat.whatsapp.com/DVclnLKJGNnDQxnxG7vRfT"><button type="button" style="width: 20vh;"
               class="btn btn-outline-success">Whatsapp<i class="fa fa-whatsapp" aria-hidden="true"></i>
             </button></a>
         </div>
-        <div class="col">
-          <a href="https://www.youtube.com/channel/UCAKcKpuKDjXi_Fc4hp-lQPA"><button type="button"
+        <div class="col" style="flex-grow: 0;">
+          <a href="https://www.youtube.com/channel/UCAKcKpuKDjXi_Fc4hp-lQPA"><button type="button" style="width: 20vh;"
               class="btn btn-outline-danger">YouTube<i class="fa fa-youtube" aria-hidden="true"></i>
             </button></a>
         </div>
@@ -505,13 +515,13 @@ huge recruiters,free email job alerts,">
           <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
             <h6 style="color:#FF5733;" class="text-uppercase mb-4 font-weight-bold">Useful Websites</h6>
             <p>
-              <a href="https://drushyaindia.tech">DrushyaIndia</a>
+              <a href="https://drushyaindia.com/">DrushyaIndia</a>
             </p>
             <p>
               <a href="https://spaceinhindi.in">SpaceInHindi</a>
             </p>
             <p>
-              <a href="https://drushyaindia.tech/web-development">Web Development</a>
+              <a href="https://drushyaindia.com/web-development">Web Development</a>
             </p>
           </div>
 
@@ -578,7 +588,7 @@ huge recruiters,free email job alerts,">
               </a>
             </li>-->
                 <li class="list-inline-item">
-                  <a href="https://in.linkedin.com/in/drushya-india-15bb521a9"
+                  <a href="https://www.linkedin.com/in/drushya-digital-india-private-limited/"
                     class="btn-floating btn-sm rgba-white-slight mx-1">
                     <i style="color:#000CFF;" class="fab fa-linkedin-in"></i>
                   </a>
