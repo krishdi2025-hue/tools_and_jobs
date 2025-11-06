@@ -39,6 +39,8 @@ def logout_view(request):
     # Remove cookies
     response.delete_cookie('access_token')
     response.delete_cookie('refresh_token')
+    token = RefreshToken(request.COOKIES.get('refresh_token'))
+    token.blacklist()
     django_logout(request)
     return response
 
