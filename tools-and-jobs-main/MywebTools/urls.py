@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path, re_path, include
+from django.urls import path, include
 
 
 from django.contrib import admin
@@ -26,6 +26,9 @@ from .sitemaps import TestSitemap
 from django.views.generic.base import TemplateView
 from django.shortcuts import redirect
 
+from rest_framework_simplejwt import views as jwt_views
+from login import views as login_views
+from register import views as register_views
 
 sitemaps = {
     'static':StaticViewSitemap,
@@ -47,9 +50,14 @@ urlpatterns = [
     path('ads.txt', TemplateView.as_view(template_name='ads.txt', content_type='text/plain'), ),
     path('ckeditor/',include('ckeditor_uploader.urls')),
 
-    path('register/', include('register.urls')),
-    # login app
-    path('login/', include('login.urls')),
+    # company login, register
+    path('', include('login.urls')),
+    path('', include('register.urls')),
+
+    # token API endpoints (we will not expose raw tokens to JS; views set cookies)
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/', include('accounts.urls')),   
 
               ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

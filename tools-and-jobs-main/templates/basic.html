@@ -32,6 +32,38 @@
     div.scrollmenu a:hover {
       background-color: #777;
     }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    /* Track (background area) */
+    ::-webkit-scrollbar-track {
+      background: #333333;
+      /* dark base color */
+      border-radius: 10px;
+    }
+
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(15deg, #ffb300, #F3550D);
+      border-radius: 10px;
+      border: 3px solid #333333;
+      /* gives clean gap between thumb and track */
+      transition: background 0.3s ease;
+    }
+
+    /* Thumb hover effect */
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #F3550D, #FFC107);
+    }
+
+    /* Optional – corner (when both scrollbars appear) */
+    ::-webkit-scrollbar-corner {
+      background: #333333;
+    }
   </style>
 
 
@@ -254,23 +286,97 @@ huge recruiters,free email job alerts,">
           <a style="color:#FF5733;" class="nav-link" href="{% url 'downloadapp' %}">Download our app</a>
         </li>
 
-        <li class="nav-item"> <!-- access this using name in url-->
-          <a style="color:#FF5733;" class="nav-link" href="{% url 'login' %}">
-            Company-Login
+        <style>
+          /* Navbar link base style */
+          .nav-item .nav-link {
+            color: #FF5733;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+          }
+
+          /* Hover effect (smooth color + underline animation) */
+          .nav-item .nav-link:hover {
+            color: #F3550D;
+          }
+
+          /* Modern underline animation */
+          .nav-item .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FF5733, #FFC107);
+            transition: width 0.3s ease;
+          }
+
+          .nav-item .nav-link:hover::after {
+            width: 100%;
+          }
+
+          /* Dropdown items styling */
+          .dropdown-menu {
+            background: #333333;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+          }
+
+          /* Dropdown links */
+          .dropdown-item {
+            border-radius: 8px;
+            color: #FFC107;
+            font-weight: 500;
+            transition: background 0.3s, color 0.3s;
+          }
+
+          /* Dropdown hover effects */
+          .dropdown-item:hover {
+            background: linear-gradient(90deg, #ff8063, #ffc5aa);
+            color: #fff;
+          }
+        </style>
+
+        <li class="nav-item dropdown">
+          <a style="color:#FF5733;" class="nav-link dropdown-toggle" id="navbarDrop" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            intern
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" style="color:red;" target="_blank"
+              href="https://drushyaindia.com/internship-form/">remote
+              intern</a>
+            <a class="dropdown-item" href="{% url 'mcq' %}">All internships</a>
+          </div>
+        </li>
+
+        <!-- Debug info -->
+        <li class="nav-item">
+          <span id="navUser"></span>
+        </li>
+        <li class="nav-item" id="company-login-item">
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'login' %}">Company-Login</a>
+        </li>
+
+        <li class="nav-item" id="company-register-item">
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'register' %}">Company-Register</a>
+        </li>
+
+        <li class="nav-item" id="user-profile-item" style="display: none;">
+          <a style="color:#FF5733;" class="nav-link" href="/dashboard/">
+            <i class="fas fa-user-circle"></i> Profile
           </a>
         </li>
 
-        <li class="nav-item"> <!-- access this using name in url-->
-          <a style="color:#FF5733;" class="nav-link" href="{% url 'company_register' %}">
-            Company-Register
-          </a>
-        </li>
+
 
         {% block content4 %}
         <li class="nav-item">
           <a style="color:#FF5733;" class="nav-link" href="{% url 'suscribe' %}">Free alerts form</a>
         </li>
-
         {% endblock %}
       </ul>
 
@@ -278,6 +384,14 @@ huge recruiters,free email job alerts,">
 
     <a href="{% url 'searchtoolsjobs' %}"><button type="button" class="btn btn-outline-warning"> Search jobs, tools &
         courses here</button></a>
+
+    <li class="nav-item" id="logout-item" style="display: none;">
+      <a style="color:#FF5733; cursor:pointer;" class="nav-link" id="logout-link">
+        Logout
+      </a>
+    </li>
+
+
   </nav>
 
   <div class="scrollmenu">
@@ -302,18 +416,18 @@ huge recruiters,free email job alerts,">
       <div class="row" style="justify-content: space-between;">
         <div class="col" style="flex-grow: 0;">
 
-          <a href="https://t.me/toolsjobs"><button type="button" style="width: 20vh;"
+          <a href="https://t.me/toolsjobs"><button type="button" style="width: 22vh;"
               class="btn btn-outline-info">Telegram<i class="fa fa-telegram" aria-hidden="true"></i>
             </button></a>
 
         </div>
         <div class="col" style="flex-grow: 0;">
-          <a href="https://chat.whatsapp.com/DVclnLKJGNnDQxnxG7vRfT"><button type="button" style="width: 20vh;"
+          <a href="https://chat.whatsapp.com/DVclnLKJGNnDQxnxG7vRfT"><button type="button" style="width: 22vh;"
               class="btn btn-outline-success">Whatsapp<i class="fa fa-whatsapp" aria-hidden="true"></i>
             </button></a>
         </div>
         <div class="col" style="flex-grow: 0;">
-          <a href="https://www.youtube.com/channel/UCAKcKpuKDjXi_Fc4hp-lQPA"><button type="button" style="width: 20vh;"
+          <a href="https://www.youtube.com/channel/UCAKcKpuKDjXi_Fc4hp-lQPA"><button type="button" style="width: 22vh;"
               class="btn btn-outline-danger">YouTube<i class="fa fa-youtube" aria-hidden="true"></i>
             </button></a>
         </div>
@@ -365,7 +479,7 @@ huge recruiters,free email job alerts,">
 
   {% block content3 %}
 
-  <div class="container">
+  <div class=" container">
     <div class="card-group">
       <div class="card border-primary">
         <center>
@@ -401,8 +515,10 @@ huge recruiters,free email job alerts,">
         </center>
         <div class="card-body">
           <h5 class="card-title">Free courses</h5>
-          <p class="card-text">ToolsandJobs is best platform to find thousands and lakhs of free premium courses for
-            absolutely free. Here you can find premium udemy courses for free. Just click below to get started.</p>
+          <p class="card-text">ToolsandJobs is best platform to find thousands and lakhs of free premium courses
+            for
+            absolutely free. Here you can find premium udemy courses for free. Just click below to get started.
+          </p>
           <a href="/mcq/category/FreeCourses"> <button type="button" class="btn btn-primary">Go There</button></a>
         </div>
       </div>
@@ -416,7 +532,8 @@ huge recruiters,free email job alerts,">
           </center>
           <div class="card-body">
             <h5 class="card-title">Jobs</h5>
-            <p class="card-text">ToolsandJobs is providing jobs through the site with free alerts. It is best way to
+            <p class="card-text">ToolsandJobs is providing jobs through the site with free alerts. It is best way
+              to
               find your dream job.</p>
             <a href="/mcq/category/Jobs"> <button type="button" class="btn btn-primary">Go There</button></a>
           </div>
@@ -425,14 +542,6 @@ huge recruiters,free email job alerts,">
     </div>
   </div>
   {% endblock %}
-
-
-
-
-
-
-
-
 
 
 
@@ -454,7 +563,7 @@ huge recruiters,free email job alerts,">
 
   <div class="fluid">
     <!-- Footer -->
-    <footer class="page-footer font-small text-light bg-dark pt-4">
+    <footer class="page-footer font-small text-light bg-dark">
 
       <!-- Footer Links -->
       <div class="container text-center text-md-left">
@@ -535,7 +644,8 @@ huge recruiters,free email job alerts,">
               <i class="fas fa-home mr-3"></i><a href="{% url 'contactus' %}">Contact us</a>
             </p>
             <p style="color:#FF5733;">
-              <i class="fas fa-envelope mr-3"></i><a href="mailto:toolsplusjobs@gmail.com"> toolsplusjobs@gmail.com</a>
+              <i class="fas fa-envelope mr-3"></i><a href="mailto:toolsplusjobs@gmail.com">
+                toolsplusjobs@gmail.com</a>
             </p>
           </div>
           <!-- Grid column -->
@@ -626,3 +736,50 @@ huge recruiters,free email job alerts,">
 </body>
 
 </html>
+
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const accessToken = localStorage.getItem("access")?.trim();
+    console.log("Access token found:", accessToken); // Debug line
+
+    const loginItem = document.getElementById("company-login-item");
+    const registerItem = document.getElementById("company-register-item");
+    const profileItem = document.getElementById("user-profile-item");
+    const logoutItem = document.getElementById("logout-item");
+
+    // Helper: check if token exists and looks valid
+    function isLoggedIn() {
+      return accessToken && accessToken.length > 20;
+    }
+
+    if (isLoggedIn()) {
+      console.log("✅ Logged in - showing profile/logout");
+      if (loginItem) loginItem.style.display = "none";
+      if (registerItem) registerItem.style.display = "none";
+      if (profileItem) profileItem.style.display = "block";
+      if (logoutItem) logoutItem.style.display = "block";
+    } else {
+      console.log("❌ Not logged in - showing login/register");
+      if (loginItem) loginItem.style.display = "block";
+      if (registerItem) registerItem.style.display = "block";
+      if (profileItem) profileItem.style.display = "none";
+      if (logoutItem) logoutItem.style.display = "none";
+    }
+
+    // ✅ Logout handler
+    if (logoutItem) {
+      logoutItem.addEventListener("click", () => {
+        console.log("Logging out...");
+        localStorage.removeItem("access");
+        localStorage.removeItem("refresh");
+        localStorage.removeItem("email");
+        localStorage.removeItem("username");
+        window.location.reload();
+      });
+    }
+  });
+</script>
+
+</script>

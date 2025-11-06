@@ -54,12 +54,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # optional third-party apps (added below if available)
     "rest_framework", # for jwt auth
+    'corsheaders',
+    'rest_framework_simplejwt.token_blacklist',
     'URLshortner',
     'login',
     'register',
-
-
+    'accounts',
 ]
+
+AUTH_USER_MODEL = 'accounts.User'
 
 # Try to import optional third-party apps and append them only if available.
 optional_third_party = [
@@ -82,15 +85,21 @@ for module_name, app_label in optional_third_party:
 # jwt auth settings
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # keep other auth classes if you need session auth for admin etc.
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
     ),
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    "AUTH_HEADER_TYPES": ("Bearer",),
+    # recommended: short-lived access token + longer refresh token
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),         # Access short (refresh to keep logged in)
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),            # <-- user stays logged in 7 days
+    'ROTATE_REFRESH_TOKENS': True,                          # rotate refresh tokens (more secure)
+    'BLACKLIST_AFTER_ROTATION': True,                       # if you add blacklist app
 }
 
 
@@ -105,6 +114,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
 MIDDLEWARE = [
 # SecurityMiddleware must be listed before other middleware
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     # removed duplicate SecurityMiddleware (was listed twice)
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -114,6 +124,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # JWT Authentication Middleware
+    'MywebTools.middleware.JWTAuthMiddleware',
+    
 
 ]
 
@@ -122,6 +135,13 @@ SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 SECURE_HSTS_SECONDS = 31536000
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_COOKIE_HTTPONLY = False  # CSRF cookie must be readable by JS sometimes, so usually False
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:8000",
+]
 
 
 ROOT_URLCONF = 'MywebTools.urls'
@@ -163,9 +183,13 @@ DATABASES = {
 }
 
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -242,5 +266,3 @@ django_heroku.settings(locals())
 # Activate Django-Heroku if package is available.
 if django_heroku:
     django_heroku.settings(locals())
-
-

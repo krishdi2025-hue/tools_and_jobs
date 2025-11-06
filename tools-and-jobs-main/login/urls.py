@@ -1,13 +1,13 @@
 from django.urls import path
-from .views import company_login_view,EmailTokenObtainPairView
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from . import views
 
-
+from accounts.views import CustomTokenObtainPairView
+# from .views import login_view,logout_view
 
 urlpatterns = [
-    # path("signup/", signup_view, name="signup"),
-    path("", company_login_view, name="login"),
-
-    path('api/token/', EmailTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('token/refresh/', views.refresh_token_view, name='token_refresh_view'),
+    path('dashboard/', views.dashboard_view, name='dashboard'), 
+    path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
 ]
