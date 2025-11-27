@@ -10,6 +10,7 @@ User = get_user_model()
 def register_view(request):
     if request.method == "POST":
         email = request.POST.get('company_email')
+        # uname = request.POST.get('username')
         password = request.POST.get('password')
         password2 = request.POST.get('password2')
         company_name = request.POST.get('company_name')
@@ -25,6 +26,7 @@ def register_view(request):
             return render(request, "register.html")
 
         user = User.objects.create_user(
+            # uname=uname,
             email=email,
             password=password,
             company_name=company_name,
@@ -42,3 +44,4 @@ def register_view(request):
         return response
 
     return render(request, "register.html")
+

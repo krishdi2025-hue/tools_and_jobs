@@ -1,10 +1,3 @@
-# from django.contrib import admin
-# from .models import Company
+from django.contrib import admin
 
-# # Register your models here.
-
-# @admin.register(Company)
-# class CompanyAdmin(admin.ModelAdmin):
-#     list_display = ('company_name', 'company_email', 'company_phone', 'created_at')
-#     search_fields = ('company_name', 'company_email')
-#     readonly_fields = ('created_at',)
+# Register your models here.

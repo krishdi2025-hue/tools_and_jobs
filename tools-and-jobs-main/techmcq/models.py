@@ -21,7 +21,8 @@ class TechMCQ(models.Model):
     desc = models.CharField(max_length=170,null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT,default=1)
     photos1 = models.ImageField(upload_to='pics', blank=True, default='pics/autocad-engifree.jpg')
-    contents1 = RichTextUploadingField(blank=True, null=True)
+    
+    contents1 = RichTextUploadingField(blank=True, null=True) ###############
     updated_on1 = models.DateTimeField(auto_now=True)
     created_on1 = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)

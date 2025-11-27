@@ -54,6 +54,8 @@ urlpatterns = [
     path('', include('login.urls')),
     path('', include('register.urls')),
 
+ 
+
     # token API endpoints (we will not expose raw tokens to JS; views set cookies)
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),

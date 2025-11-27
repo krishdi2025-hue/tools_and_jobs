@@ -1,0 +1,130 @@
+
+{% load static %}
+
+{% block title %}Add New Job - Company Panel{% endblock %}
+
+{% block content %}
+
+<style>
+    body {
+        background: #f6f6f6;
+        font-family: Inter, Arial;
+    }
+
+    .job-form-container {
+        max-width: 750px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .page-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 18px;
+        color: #333333;
+        border-left: 6px solid #FF5733;
+        padding-left: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #333333;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-top: 5px;
+        font-size: 14px;
+    }
+
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .btn-submit {
+        margin-top: 20px;
+        padding: 14px 22px;
+        width: 100%;
+        background: linear-gradient(135deg, #FF5733, #F3550D);
+        border: none;
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border: 2px solid #FFC107;
+        transition: 0.25s ease-in-out;
+    }
+
+    .btn-submit:hover {
+        background: #FFC107;
+        color: #333333;
+        border-color: #FF5733;
+        transform: translateY(-2px);
+    }
+</style>
+
+<div class="job-form-container">
+
+    <h2 class="page-title">Add New Job</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Job Title</label>
+            <input type="text" name="title" placeholder="e.g. Full Stack Developer" required>
+        </div>
+
+        <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" name="company_name" placeholder="Your Company Name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Experience Required</label>
+            <input type="text" name="experience" placeholder="e.g. 2 - 4 years">
+        </div>
+
+        <div class="form-group">
+            <label>Salary</label>
+            <input type="text" name="salary" placeholder="e.g. ₹50,000 - ₹80,000">
+        </div>
+
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" placeholder="e.g. Bangalore, Mumbai">
+        </div>
+
+        <div class="form-group">
+            <label>Job Description</label>
+            <textarea name="description" placeholder="Describe the role..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Key Responsibilities (comma-separated)</label>
+            <textarea name="responsibilities" placeholder="e.g. Backend development, API design, Testing"></textarea>
+        </div>
+
+        <button class="btn-submit" type="submit">Publish Job</button>
+    </form>
+
+</div>
+
+{% endblock %}

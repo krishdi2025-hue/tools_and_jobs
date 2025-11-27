@@ -379,9 +379,16 @@ huge recruiters,free email job alerts,">
     <a href="{% url 'searchtoolsjobs' %}"><button type="button" class="btn btn-outline-warning"> Search jobs, tools &
         courses here</button></a>
 
+    {% if request.user.is_authenticated %}
+    <li class="nav-item" id="jobs-item" style="display: none;">
+      <a style="color:#FF5733;" class="nav-link" href="{% url 'jobs_add' %}">
+        <i class="fas fa-user-circle"></i> Add Job
+      </a>
+    </li>
+    {% endif %}
 
     <li class="nav-item" id="user-profile-item" style="display: none;">
-      <a style="color:#FF5733;" class="nav-link" href="/dashboard/">
+      <a style="color:#FF5733;" class="nav-link" href="/Profile/">
         <i class="fas fa-user-circle"></i> Profile
       </a>
     </li>
@@ -749,6 +756,7 @@ huge recruiters,free email job alerts,">
     const registerItem = document.getElementById("company-register-item");
     const profileItem = document.getElementById("user-profile-item");
     const logoutItem = document.getElementById("logout-item");
+    const jobsItem = document.getElementById("jobs-item");
 
     // Helper: check if token exists and looks valid
     function isLoggedIn() {
@@ -761,12 +769,14 @@ huge recruiters,free email job alerts,">
       if (registerItem) registerItem.style.display = "none";
       if (profileItem) profileItem.style.display = "block";
       if (logoutItem) logoutItem.style.display = "block";
+      if (jobsItem) jobsItem.style.display = "block";
     } else {
       console.log("❌ Not logged in - showing login/register");
       if (loginItem) loginItem.style.display = "block";
       if (registerItem) registerItem.style.display = "block";
       if (profileItem) profileItem.style.display = "none";
       if (logoutItem) logoutItem.style.display = "none";
+      if (jobsItem) jobsItem.style.display = "none";
     }
 
     // ✅ Logout handler

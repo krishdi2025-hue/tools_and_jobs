@@ -3,13 +3,99 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Profile</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .dashboard-container {
+            background: #333333;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            padding: 40px 60px;
+            width: 450px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .dashboard-container h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #FFC107;
+        }
+
+        .dashboard-container p {
+            font-size: 15px;
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        .user-icon {
+            font-size: 60px;
+            color: #FFC107;
+            margin-bottom: 15px;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            background: #FF5733;
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #FFC107;
+            color: #333333;
+            transform: translateY(-2px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <h2>Welcome, {{ user.username }}!</h2>
-    <p>This page is protected by JWT. Only logged-in users can see it.</p>
-    <a href="{% url 'logout' %}">Logout</a>
+    <div class="dashboard-container">
+        <i class="fa fa-user user-icon"></i>
+        <h2>
+            Welcome,
+            {% if request.user.company_name %}
+            {{ request.user.company_name }}
+            {% else %}
+            {{ request.user.email }}
+            {% endif %}
+        </h2>
+        <p>This page is protected by JWT. Only logged-in users can see it.</p>
+        <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    </div>
 </body>
 
 </html>

@@ -77,6 +77,7 @@ def refresh_token_view(request):
 
 
 @login_required(login_url='login')
-def dashboard_view(request):
+def Profile_view(request):
     # request.user is already set by JWTAuthMiddleware
     return render(request, 'dashboard.html', {'user': request.user})
+

@@ -3,6 +3,13 @@ from .models import  Engineering,Busi_Management_administration,Communication,Sa
 from django.db.models import Q
 
 # Create your views here.
+
+def test(request):
+    return render(request,'testinggg.html')
+
+def jobs_add(request):
+    return render(request,'jobs_add.html')
+
 def jobs(request):
     return render(request,'jobs.html')
 
@@ -25,6 +32,8 @@ def communication(request):
 
 def search1(request):
     query = request.GET.get('query')
+
+
 
 
 #search queries
