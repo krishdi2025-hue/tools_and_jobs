@@ -1,130 +1,196 @@
-
+{% extends 'basic.html' %}
 {% load static %}
 
-{% block title %}Add New Job - Company Panel{% endblock %}
+{% block title %}Add Job - Toolsandjobs{% endblock %}
 
-{% block content %}
-
+{% block content1 %}
 <style>
-    body {
-        background: #f6f6f6;
-        font-family: Inter, Arial;
-    }
+  :root{
+    --primary: #FF5733;
+    --secondary: #F3550D;
+    --accent: #FFC107;
+    --text: #333333;
+    --muted: #7a7a7a;
+    --card: #ffffff;
+    --bg: #fbfbfb;
+    --radius: 14px;
+    --shadow: 0 10px 30px rgba(18,18,18,0.06);
+  }
 
-    .job-form-container {
-        max-width: 750px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
+  .site-container{ max-width:1100px; margin:28px auto; padding:20px; font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; }
 
-    .page-title {
-        font-size: 24px;
-        font-weight: 700;
-        margin-bottom: 18px;
-        color: #333333;
-        border-left: 6px solid #FF5733;
-        padding-left: 12px;
-    }
+  /* Card */
+  .job-card{ background: linear-gradient(180deg, #fff, var(--card)); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px; border:1px solid rgba(0,0,0,0.04); }
+  .job-header{ display:flex; align-items:center; justify-content:space-between; gap:12px }
+  .job-title{ font-size:20px; color:var(--text); margin:0 }
+  .job-sub{ color:var(--muted); font-size:13px }
 
-    .form-group {
-        margin-bottom: 18px;
-    }
+  /* layout: left form / right description */
+  .form-columns{ display:grid; grid-template-columns: 1fr 420px; gap:18px; margin-top:14px }
+  @media (max-width:980px){ .form-columns{ grid-template-columns: 1fr; } .right-col{ order:2 } }
 
-    label {
-        font-weight: 600;
-        color: #333333;
-        margin-bottom: 5px;
-        display: block;
-    }
+  /* left column grid for paired inputs */
+  .left-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:12px }
+  @media (max-width:720px){ .left-grid{ grid-template-columns:1fr } }
 
-    input,
-    select,
-    textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        margin-top: 5px;
-        font-size: 14px;
-    }
+  label{ display:block; margin-bottom:6px; font-weight:600; color:var(--text); font-size:13px }
+  .field-wrap{ margin-bottom:12px }
+  input, select, textarea{ width:100%; padding:11px 12px; border-radius:10px; border:1px solid rgba(0,0,0,0.08); font-size:14px; color:var(--text); background:#fff; box-sizing:border-box }
+  input:focus, textarea:focus, select:focus{ outline:none; box-shadow:0 6px 24px rgba(255,87,51,0.08); border-color:var(--primary) }
 
-    textarea {
-        min-height: 120px;
-        resize: vertical;
-    }
+  /* make file input nicer */
+  .file-input{ display:flex; gap:8px; align-items:center }
+  .file-input input[type=file]{ flex:1 }
 
-    .btn-submit {
-        margin-top: 20px;
-        padding: 14px 22px;
-        width: 100%;
-        background: linear-gradient(135deg, #FF5733, #F3550D);
-        border: none;
-        color: white;
-        font-size: 16px;
-        font-weight: 700;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        border: 2px solid #FFC107;
-        transition: 0.25s ease-in-out;
-    }
+  /* right column (description) */
+  .right-col{ background:#fff; border-radius:12px; padding:12px; border:1px solid rgba(0,0,0,0.04); height:100%; display:flex; flex-direction:column }
+  .desc-header{ display:flex; align-items:center; justify-content:space-between; gap:8px }
+  .desc-title{ font-weight:700; color:var(--text); font-size:14px }
+  .desc-muted{ color:var(--muted); font-size:13px }
+  .desc-editor{ margin-top:10px; flex:1; min-height:320px }
+  .desc-preview{ margin-top:12px; border-top:1px dashed rgba(0,0,0,0.06); padding-top:10px; max-height:220px; overflow:auto; background:#fcfcfc; border-radius:8px }
+  .preview-label{ font-size:12px; color:var(--muted); margin-bottom:8px }
 
-    .btn-submit:hover {
-        background: #FFC107;
-        color: #333333;
-        border-color: #FF5733;
-        transform: translateY(-2px);
-    }
+  /* actions */
+  .actions{ margin-top:16px; display:flex; gap:10px; align-items:center }
+  .btn{ padding:10px 14px; border-radius:10px; font-weight:700; cursor:pointer; border:none }
+  .btn-primary{ background: linear-gradient(90deg,var(--primary),var(--secondary)); color:#fff }
+  .btn-outline{ background:transparent; border:1px solid rgba(51,51,51,0.08); color:var(--text); padding:9px 12px }
+
+  .help-text{ font-size:12px; color:var(--muted); margin-top:6px }
+  .error-text{ color:#b00020; font-size:13px; margin-top:6px }
+
+  /* CKEditor tweaks */
+  .cke{ border-radius:8px !important; border:1px solid rgba(0,0,0,0.06) !important }
+  .cke_contents{ min-height:200px }
+
+  /* subtle responsive niceties */
+  .field-row{ display:flex; gap:10px }
+  .field-row > *{ flex:1 }
+
 </style>
 
-<div class="job-form-container">
+<div class="site-container">
+  <div class="job-card">
+    <div class="job-header">
+      <div>
+        <h2 class="job-title">Add Job</h2>
+        <div class="job-sub">Create a job listing. Description panel is on the right for quick editing + preview.</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <a href="{% url 'jobs' %}" class="btn btn-outline">Back to Jobs</a>
+      </div>
+    </div>
 
-    <h2 class="page-title">Add New Job</h2>
+    <form method="post" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+      {{ form.media }}
 
-    <form method="POST">
-        {% csrf_token %}
+      {% if form.non_field_errors %}
+        <div class="error-text" style="margin-top:12px">{{ form.non_field_errors }}</div>
+      {% endif %}
 
-        <div class="form-group">
-            <label>Job Title</label>
-            <input type="text" name="title" placeholder="e.g. Full Stack Developer" required>
+      <div class="form-columns">
+
+        <!-- LEFT: all fields except description (arranged in two-column grid) -->
+        <div>
+          <div class="left-grid">
+            {% for field in form %}
+              {% if field.name == 'desc' or field.name == 'descr' %}
+                {# skip description fields on left - they'll render on right #}
+              {% else %}
+                <div class="field-wrap">
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  <div>{{ field }}</div>
+                  {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
+                  {% if field.errors %}<div class="error-text">{{ field.errors|striptags }}</div>{% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <!-- actions placed under left column so buttons align naturally -->
+          <div class="actions">
+            <button type="submit" class="btn btn-primary">Save Job</button>
+            <a href="{% url 'jobs' %}" class="btn btn-outline">Cancel</a>
+          </div>
         </div>
 
-        <div class="form-group">
-            <label>Company Name</label>
-            <input type="text" name="company_name" placeholder="Your Company Name" required>
+        <!-- RIGHT: Description / Rich text editor + live preview -->
+        <div class="right-col">
+          <div class="desc-header">
+            <div>
+              <div class="desc-title">Job Description</div>
+              <div class="desc-muted">Rich text editor. Changes update the live preview below.</div>
+            </div>
+          </div>
+
+          <div class="desc-editor">
+            {% comment %} Render description fields here (supports desc or descr) {% endcomment %}
+            {% for field in form %}
+              {% if field.name == 'desc' or field.name == 'descr' %}
+                <div class="field-wrap">
+                  <label for="{{ field.id_for_label }}" style="margin-bottom:8px">{{ field.label }}</label>
+                  <div>{{ field }}</div>
+                  {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
+                  {% if field.errors %}<div class="error-text">{{ field.errors|striptags }}</div>{% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="desc-preview" id="desc-preview">
+            <div class="preview-label">Live preview</div>
+            <div id="preview-content" style="color:var(--text);font-size:14px"></div>
+          </div>
         </div>
 
-        <div class="form-group">
-            <label>Experience Required</label>
-            <input type="text" name="experience" placeholder="e.g. 2 - 4 years">
-        </div>
+      </div>
 
-        <div class="form-group">
-            <label>Salary</label>
-            <input type="text" name="salary" placeholder="e.g. ₹50,000 - ₹80,000">
-        </div>
-
-        <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" placeholder="e.g. Bangalore, Mumbai">
-        </div>
-
-        <div class="form-group">
-            <label>Job Description</label>
-            <textarea name="description" placeholder="Describe the role..."></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Key Responsibilities (comma-separated)</label>
-            <textarea name="responsibilities" placeholder="e.g. Backend development, API design, Testing"></textarea>
-        </div>
-
-        <button class="btn-submit" type="submit">Publish Job</button>
     </form>
-
+  </div>
 </div>
+
+<script>
+  // Live preview for CKEditor or plain textarea
+  function updatePreview(html){
+    const preview = document.getElementById('preview-content');
+    if(!preview) return;
+    preview.innerHTML = html || '<em>No description yet</em>';
+  }
+
+  function initPreview(){
+    // handle plain textarea
+    const txt = document.querySelector('textarea[name="desc"], textarea[name="descr"]');
+    if(txt && !window.CKEDITOR){
+      updatePreview(txt.value);
+      txt.addEventListener('input', e=> updatePreview(e.target.value));
+    }
+
+    // handle CKEditor (classic) if present
+    if(window.CKEDITOR && CKEDITOR.instances){
+      // for each instance named desc/descr attach change listener
+      Object.keys(CKEDITOR.instances).forEach(function(key){
+        const inst = CKEDITOR.instances[key];
+        if(!inst) return;
+        // initial
+        try{ updatePreview(inst.getData()); }catch(e){}
+        inst.on('change', function(){ updatePreview(inst.getData()); });
+      });
+    }
+
+    // If using CKEditor5 (inline modern builds) - listen differently
+    if(window.ClassicEditor){
+      // poll for editor elements: CKEditor5 attaches editors to DOM; we try to find by textarea id
+      const tryAttach = ()=>{
+        const e = document.querySelector('[data-cke-instance]');
+        // nothing guaranteed; fallback: attach on submit only
+      };
+      tryAttach();
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', initPreview);
+</script>
 
 {% endblock %}

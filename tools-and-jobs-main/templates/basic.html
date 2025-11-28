@@ -271,9 +271,13 @@ huge recruiters,free email job alerts,">
 
           </div>
         </li>
-        <li class="nav-item">
-          <a style="color:#FF5733;" class="nav-link" href="/mcq/category/Jobs">Jobs</a>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item" id="jobs-item" style="display: none;">
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'jobs' %}">
+            <i class="fas fa-user-circle"></i> Jobs
+          </a>
         </li>
+        {% endif %}
         <li class="nav-item">
           <a style="color:#FF5733;" class="nav-link" href="/mcq/category/FreeCourses">Free Courses</a>
         </li>
@@ -379,19 +383,15 @@ huge recruiters,free email job alerts,">
     <a href="{% url 'searchtoolsjobs' %}"><button type="button" class="btn btn-outline-warning"> Search jobs, tools &
         courses here</button></a>
 
-    {% if request.user.is_authenticated %}
-    <li class="nav-item" id="jobs-item" style="display: none;">
-      <a style="color:#FF5733;" class="nav-link" href="{% url 'jobs_add' %}">
-        <i class="fas fa-user-circle"></i> Add Job
-      </a>
-    </li>
-    {% endif %}
 
-    <li class="nav-item" id="user-profile-item" style="display: none;">
-      <a style="color:#FF5733;" class="nav-link" href="/Profile/">
-        <i class="fas fa-user-circle"></i> Profile
-      </a>
-    </li>
+   
+      {% if request.user.is_authenticated %}  
+      <li class="nav-item" id="user-profile-item" style="display: none;">
+        <a style="color:#FF5733;" class="nav-link" href="/Profile/">
+          <i class="fas fa-user-circle"></i> Profile
+        </a>
+      </li>
+    {% endif %}
 
     <li class="nav-item" id="logout-item" style="display: none;">
       <a style="color:#FF5733; cursor:pointer;" class="nav-link" id="logout-link">
@@ -543,7 +543,7 @@ huge recruiters,free email job alerts,">
             <p class="card-text">ToolsandJobs is providing jobs through the site with free alerts. It is best way
               to
               find your dream job.</p>
-            <a href="/mcq/category/Jobs"> <button type="button" class="btn btn-primary">Go There</button></a>
+            <a href="{% url 'jobs' %}"> <button type="button" class="btn btn-primary">Go There</button></a>
           </div>
         </div>
       </div>
