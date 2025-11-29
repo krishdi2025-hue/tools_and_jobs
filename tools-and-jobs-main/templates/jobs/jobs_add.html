@@ -32,8 +32,15 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* Card */
@@ -98,6 +105,7 @@
     .form-columns {
       grid-template-columns: 1fr;
     }
+
     .right-col {
       order: 2;
     }
@@ -114,10 +122,12 @@
     .left-grid {
       grid-template-columns: 1fr;
     }
+
     .site-container {
       padding: 16px;
       margin: 16px auto;
     }
+
     .job-card {
       padding: 20px;
     }
@@ -137,17 +147,37 @@
     animation: slideIn 0.4s ease-out backwards;
   }
 
-  .field-wrap:nth-child(1) { animation-delay: 0.05s; }
-  .field-wrap:nth-child(2) { animation-delay: 0.1s; }
-  .field-wrap:nth-child(3) { animation-delay: 0.15s; }
-  .field-wrap:nth-child(4) { animation-delay: 0.2s; }
-
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
+  .field-wrap:nth-child(1) {
+    animation-delay: 0.05s;
   }
 
-  input, select, textarea {
+  .field-wrap:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .field-wrap:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+
+  .field-wrap:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  input,
+  select,
+  textarea {
     width: 100%;
     padding: 12px 16px;
     border-radius: 12px;
@@ -159,11 +189,15 @@
     font-family: inherit;
   }
 
-  input:hover, select:hover, textarea:hover {
+  input:hover,
+  select:hover,
+  textarea:hover {
     border-color: rgba(255, 87, 51, 0.2);
   }
 
-  input:focus, textarea:focus, select:focus {
+  input:focus,
+  textarea:focus,
+  select:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 4px rgba(255, 87, 51, 0.1);
@@ -435,8 +469,15 @@
 
   /* Add pulse animation to primary button */
   @keyframes pulse {
-    0%, 100% { box-shadow: 0 4px 16px rgba(255, 87, 51, 0.2); }
-    50% { box-shadow: 0 4px 24px rgba(255, 87, 51, 0.4); }
+
+    0%,
+    100% {
+      box-shadow: 0 4px 16px rgba(255, 87, 51, 0.2);
+    }
+
+    50% {
+      box-shadow: 0 4px 24px rgba(255, 87, 51, 0.4);
+    }
   }
 
   .btn-primary {
@@ -459,15 +500,15 @@
     font-style: italic;
   }
 
-  #preview-content h1, 
-  #preview-content h2, 
+  #preview-content h1,
+  #preview-content h2,
   #preview-content h3 {
     color: var(--primary);
     margin-top: 16px;
     margin-bottom: 8px;
   }
 
-  #preview-content ul, 
+  #preview-content ul,
   #preview-content ol {
     margin-left: 20px;
     margin-top: 8px;
@@ -479,7 +520,9 @@
   }
 
   /* Loading state for inputs */
-  input:disabled, select:disabled, textarea:disabled {
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
@@ -493,7 +536,7 @@
         <div class="job-sub">Create a job listing. Description panel is on the right for quick editing + preview.</div>
       </div>
       <div style="display:flex;gap:8px;align-items:center">
-        <a href="{% url 'jobs' %}" class="btn btn-outline">Back to Jobs</a>
+        <a href="{% url 'jobs:jobs_list' %}" class="btn btn-outline">Back to Jobs</a>
       </div>
     </div>
 
@@ -502,7 +545,7 @@
       {{ form.media }}
 
       {% if form.non_field_errors %}
-        <div class="error-text" style="margin-top:12px">{{ form.non_field_errors }}</div>
+      <div class="error-text" style="margin-top:12px">{{ form.non_field_errors }}</div>
       {% endif %}
 
       <div class="form-columns">
@@ -511,23 +554,23 @@
         <div>
           <div class="left-grid">
             {% for field in form %}
-              {% if field.name == 'desc' or field.name == 'descr' %}
-                {# skip description fields on left - they'll render on right #}
-              {% else %}
-                <div class="field-wrap">
-                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                  <div>{{ field }}</div>
-                  {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
-                  {% if field.errors %}<div class="error-text">{{ field.errors|striptags }}</div>{% endif %}
-                </div>
-              {% endif %}
+            {% if field.name == 'desc' or field.name == 'descr' %}
+            {# skip description fields on left - they'll render on right #}
+            {% else %}
+            <div class="field-wrap">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              <div>{{ field }}</div>
+              {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
+              {% if field.errors %}<div class="error-text">{{ field.errors|striptags }}</div>{% endif %}
+            </div>
+            {% endif %}
             {% endfor %}
           </div>
 
           <!-- actions placed under left column so buttons align naturally -->
           <div class="actions">
             <button type="submit" class="btn btn-primary">Publish Job</button>
-            <a href="{% url 'jobs' %}" class="btn btn-outline">Cancel</a>
+            <a href="{% url 'jobs:jobs_list' %}" class="btn btn-outline">Cancel</a>
           </div>
         </div>
 
@@ -543,14 +586,14 @@
           <div class="desc-editor">
             {% comment %} Render description fields here (supports desc or descr) {% endcomment %}
             {% for field in form %}
-              {% if field.name == 'desc' or field.name == 'descr' %}
-                <div class="field-wrap">
-                  <label for="{{ field.id_for_label }}" style="margin-bottom:8px">{{ field.label }}</label>
-                  <div>{{ field }}</div>
-                  {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
-                  {% if field.errors %}<div class="error-text">{{ field.errors|striptags }}</div>{% endif %}
-                </div>
-              {% endif %}
+            {% if field.name == 'desc' or field.name == 'descr' %}
+            <div class="field-wrap">
+              <label for="{{ field.id_for_label }}" style="margin-bottom:8px">{{ field.label }}</label>
+              <div>{{ field }}</div>
+              {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
+              {% if field.errors %}<div class="error-text">{{ field.errors|striptags }}</div>{% endif %}
+            </div>
+            {% endif %}
             {% endfor %}
           </div>
 
@@ -568,36 +611,36 @@
 
 <script>
   // Live preview for CKEditor or plain textarea
-  function updatePreview(html){
+  function updatePreview(html) {
     const preview = document.getElementById('preview-content');
-    if(!preview) return;
+    if (!preview) return;
     preview.innerHTML = html || '<em>No description yet</em>';
   }
 
-  function initPreview(){
+  function initPreview() {
     // handle plain textarea
     const txt = document.querySelector('textarea[name="desc"], textarea[name="descr"]');
-    if(txt && !window.CKEDITOR){
+    if (txt && !window.CKEDITOR) {
       updatePreview(txt.value);
-      txt.addEventListener('input', e=> updatePreview(e.target.value));
+      txt.addEventListener('input', e => updatePreview(e.target.value));
     }
 
     // handle CKEditor (classic) if present
-    if(window.CKEDITOR && CKEDITOR.instances){
+    if (window.CKEDITOR && CKEDITOR.instances) {
       // for each instance named desc/descr attach change listener
-      Object.keys(CKEDITOR.instances).forEach(function(key){
+      Object.keys(CKEDITOR.instances).forEach(function (key) {
         const inst = CKEDITOR.instances[key];
-        if(!inst) return;
+        if (!inst) return;
         // initial
-        try{ updatePreview(inst.getData()); }catch(e){}
-        inst.on('change', function(){ updatePreview(inst.getData()); });
+        try { updatePreview(inst.getData()); } catch (e) { }
+        inst.on('change', function () { updatePreview(inst.getData()); });
       });
     }
 
     // If using CKEditor5 (inline modern builds) - listen differently
-    if(window.ClassicEditor){
+    if (window.ClassicEditor) {
       // poll for editor elements: CKEditor5 attaches editors to DOM; we try to find by textarea id
-      const tryAttach = ()=>{
+      const tryAttach = () => {
         const e = document.querySelector('[data-cke-instance]');
         // nothing guaranteed; fallback: attach on submit only
       };

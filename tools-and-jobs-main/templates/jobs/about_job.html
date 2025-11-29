@@ -1,9 +1,9 @@
 {% load static %}
-{% block title %}Edit Job{% endblock %}
+{% block title %}About Job{% endblock %}
 {% block content %}
 
 <!-- form media for widgets (CKEditor will inject JS/CSS if available) -->
-{{ form.media }}
+
 
 <style>
     :root {
@@ -246,13 +246,13 @@
 
 
 <div class="bg-accent" aria-hidden="true"></div>
-
+{{ form.media }}
 
 <div class="page-wrap">
     <div class="edit-container">
         <div class="top-row">
             <div>
-                <h1>Edit Job</h1>
+                <h1>About Job</h1>
                 <div class="meta">Update job details — changes will reflect on listing</div>
             </div>
             <div class="meta">Last updated: {{ job.date_time|date:"d M Y, H:i" }}</div>
@@ -270,7 +270,7 @@
                     </div>
                     <div class="form-group">
                         <label for="{{ form.disctrict.id_for_label }}">District</label>
-                        {{ job.disctrict }}
+                        {{ job.disctrict|safe }}
                         {% for err in form.disctrict.errors %}<div class="error">{{ err }}</div>{% endfor %}
                     </div>
                 </div>
@@ -285,7 +285,7 @@
                 {# desc (CKEditor) #}
                 <div class="form-group">
                     <label for="{{ form.desc.id_for_label }}">Description</label>
-                    {{ job.desc }}
+                    {{ job.desc|safe }}
                     {% for err in form.desc.errors %}<div class="error">{{ err }}</div>{% endfor %}
                 </div>
 
@@ -327,7 +327,7 @@
                 {# descr (CKEditor) - read more / detailed description #}
                 <div class="form-group">
                     <label for="{{ form.descr.id_for_label }}">Detailed description / Read more</label>
-                    {{ job.descr }}
+                    {{ job.descr|safe }}
                     {% for err in form.descr.errors %}<div class="error">{{ err }}</div>{% endfor %}
                 </div>
 
@@ -386,12 +386,9 @@
 
                 <div class="meta-card">
                     <div style="font-weight:700;margin-bottom:6px;">Quick meta</div>
-                    <div style="font-size:13px;color:#444;margin-bottom:6px;">Vacancy: <strong>{{ job.vacancy
-                            }}</strong></div>
-                    <div style="font-size:13px;color:#444;margin-bottom:6px;">Location: <strong>{{ job.location
-                            }}</strong></div>
-                    <div style="font-size:13px;color:#444;">Last updated: <strong>{{ job.date_time|date:"d M Y, H:i"
-                            }}</strong></div>
+                    <div style="font-size:13px;color:#444;margin-bottom:6px;">Vacancy: <strong>{{ job.vacancy|safe }}</strong></div>
+                    <div style="font-size:13px;color:#444;margin-bottom:6px;">Location: <strong>{{ job.location|safe }}</strong></div>
+                    <div style="font-size:13px;color:#444;">Last updated: <strong>{{ job.date_time|date:"d M Y, H:i"|safe }}</strong></div>
                 </div>
 
                 <div class="meta-card">
@@ -408,12 +405,7 @@
                         <div style="font-size:13px;color:#0077cc;word-break:break-all">{{ job.url }}</div>
                     </div>
 
-                    <!-- <div class="btns">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="{% url 'jobs:jobs_list' %}" class="btn btn-cancel">Cancel</a>
-                        <a href="{% url 'jobs:job_delete' job.pk %}" class="btn btn-danger"
-                            onclick="return confirm('Delete this job? This action cannot be undone.')">Delete</a>
-                    </div> -->
+                 
                 </div>
 
             </aside>

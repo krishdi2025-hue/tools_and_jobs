@@ -341,12 +341,20 @@
                         <b>job description:</b> {{ jobs.descr|safe }}
                     </div>
 
+                    {% if user.is_authenticated %}
                     <div class="job-actions">
                         <a class="apply-btn" href="{{ jobs.url }}" target="_blank" rel="noopener">Apply Now</a>
                         <a class="apply-btn" href="{% url 'jobs:job_edit' jobs.pk %}">edit</a>
                         <a class="apply-btn" href="{% url 'jobs:job_delete' jobs.pk %}">delete</a>
                         <a class="apply-btn" href="{% url 'jobs:about_job' jobs.pk %}">view</a>
                     </div>
+                    {% else %}
+                    <div class="job-actions">
+                        <a class="apply-btn" href="{% url 'jobs:about_job' jobs.pk %}">Login
+                            to
+                            apply</a>
+                    </div>
+                    {% endif %}
                 </div>
             </article>
             {% empty %}
