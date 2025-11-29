@@ -273,7 +273,7 @@ huge recruiters,free email job alerts,">
         </li>
         {% if request.user.is_authenticated %}
         <li class="nav-item" id="jobs-item" style="display: none;">
-          <a style="color:#FF5733;" class="nav-link" href="{% url 'jobs' %}">
+          <a style="color:#FF5733;" class="nav-link" href="{% url 'jobs:jobs_list' %}">
             <i class="fas fa-user-circle"></i> Jobs
           </a>
         </li>
@@ -543,7 +543,7 @@ huge recruiters,free email job alerts,">
             <p class="card-text">ToolsandJobs is providing jobs through the site with free alerts. It is best way
               to
               find your dream job.</p>
-            <a href="{% url 'jobs' %}"> <button type="button" class="btn btn-primary">Go There</button></a>
+            <a href="{% url 'jobs:jobs_list' %}"> <button type="button" class="btn btn-primary">Go There</button></a>
           </div>
         </div>
       </div>

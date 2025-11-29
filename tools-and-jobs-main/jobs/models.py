@@ -11,11 +11,11 @@ class add_jobs(models.Model):
     date_time = models.DateTimeField(auto_now=True)
     #read more field
 
-    exper = models.CharField(max_length=30)
-    vacc = models.CharField(max_length=100)
-    loc = models.CharField(max_length=100)
-    sal = models.CharField(max_length=30)
-    skil = models.CharField(max_length=1000)
+    experience = models.CharField(max_length=30)
+    vacancy = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    salary = models.CharField(max_length=30)
+    skill = models.CharField(max_length=1000)
     descr = RichTextField(blank=True,null=True)
     ind_type = models.CharField(max_length=100)
     func_area = models.CharField(max_length=100)

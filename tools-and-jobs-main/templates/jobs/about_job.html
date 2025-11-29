@@ -1,0 +1,442 @@
+{% load static %}
+{% block title %}Edit Job{% endblock %}
+{% block content %}
+
+<!-- form media for widgets (CKEditor will inject JS/CSS if available) -->
+{{ form.media }}
+
+<style>
+    :root {
+        --primary: #FF5733;
+        /* dark orange */
+        --secondary: #F3550D;
+        /* orange */
+        --black: #333333;
+        --yellow: #FFC107;
+    }
+
+    body {
+        background: #fff;
+        position: relative;
+        overflow-x: hidden;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* animated orange glow - bottom-right */
+    .bg-accent {
+        position: fixed;
+        bottom: -120px;
+        right: -120px;
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(circle, rgba(255, 87, 51, 0.45), rgba(255, 87, 51, 0.18), transparent 70%);
+        z-index: 0;
+        filter: blur(40px);
+        animation: moveGlow 8s infinite alternate ease-in-out;
+    }
+
+    @keyframes moveGlow {
+        0% {
+            transform: translate(0, 0) scale(1);
+            opacity: 0.9;
+        }
+
+        50% {
+            transform: translate(-40px, -20px) scale(1.12);
+            opacity: 0.8;
+        }
+
+        100% {
+            transform: translate(-20px, -60px) scale(1.08);
+            opacity: 0.85;
+        }
+    }
+
+    .page-wrap {
+        max-width: 1100px;
+        margin: 48px auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .edit-container {
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 14px;
+        padding: 28px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        border: 1px solid rgba(255, 87, 51, 0.10);
+        backdrop-filter: blur(10px);
+    }
+
+    .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 18px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 26px;
+        color: var(--black);
+        font-weight: 700;
+    }
+
+    .meta {
+        color: #666;
+        font-size: 13px;
+    }
+
+    form.job-form {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 22px;
+        align-items: start;
+    }
+
+    /* left column (main inputs) */
+    .main-col {
+        display: grid;
+        gap: 14px;
+    }
+
+    /* right column (photo preview + meta) */
+    .side-col {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--black);
+        margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="file"],
+    select,
+    textarea {
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #e6e6e6;
+        background: #fff;
+        font-size: 14px;
+        outline: none;
+        transition: box-shadow .18s, border-color .18s, transform .12s;
+    }
+
+    textarea {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 6px 18px rgba(255, 87, 51, 0.12);
+        transform: translateY(-1px);
+    }
+
+    .ck-editor__editable_inline {
+        min-height: 180px;
+        border-radius: 8px;
+    }
+
+    .photo-preview {
+        background: #fff;
+        border-radius: 10px;
+        padding: 12px;
+        border: 1px solid #f0f0f0;
+        text-align: center;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .photo-preview img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        margin: 0 auto;
+    }
+
+
+    .meta-card {
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.92));
+        font-size: 14px;
+    }
+
+    .btns {
+        margin-top: 16px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 700;
+        border: none;
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        background: var(--primary);
+        color: #fff;
+        box-shadow: 0 8px 20px rgba(255, 87, 51, 0.18);
+    }
+
+    .btn-primary:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+    }
+
+    .btn-cancel {
+        background: var(--yellow);
+        color: #000;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        color: #fff;
+    }
+
+    .error {
+        color: #d9534f;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+
+    /* responsive */
+    @media (max-width: 980px) {
+        form.job-form {
+            grid-template-columns: 1fr;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+
+
+<div class="bg-accent" aria-hidden="true"></div>
+
+
+<div class="page-wrap">
+    <div class="edit-container">
+        <div class="top-row">
+            <div>
+                <h1>Edit Job</h1>
+                <div class="meta">Update job details — changes will reflect on listing</div>
+            </div>
+            <div class="meta">Last updated: {{ job.date_time|date:"d M Y, H:i" }}</div>
+        </div>
+
+        <form method="post" enctype="multipart/form-data" class="job-form">
+            {% csrf_token %}
+            <div class="main-col">
+                {# row: company + district #}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="{{ job.company_name.id_for_label }}">Company name</label>
+                        {{ job.company_name }}
+                        {% for err in job.company_name.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.disctrict.id_for_label }}">District</label>
+                        {{ job.disctrict }}
+                        {% for err in form.disctrict.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                </div>
+
+                {# head (title) #}
+                <div class="form-group">
+                    <label for="{{ form.head.id_for_label }}">Job Head / Title</label>
+                    {{ job.head }}
+                    {% for err in jobhead.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                </div>
+
+                {# desc (CKEditor) #}
+                <div class="form-group">
+                    <label for="{{ form.desc.id_for_label }}">Description</label>
+                    {{ job.desc }}
+                    {% for err in form.desc.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                </div>
+
+                {# url + experience + vacancy #}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="{{ form.url.id_for_label }}">Website / Apply URL</label>
+                        {{ job.url }}
+                        {% for err in form.url.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.experience.id_for_label }}">Experience</label>
+                        {{ job.experience }}
+                        {% for err in form.experience.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                </div>
+
+                {# location + salary #}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="{{ form.location.id_for_label }}">Location</label>
+                        {{ job.location }}
+                        {% for err in form.location.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.salary.id_for_label }}">Salary</label>
+                        {{ job.salary }}
+                        {% for err in form.salary.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                </div>
+
+                {# skill (textarea) #}
+                <div class="form-group">
+                    <label for="{{ form.skill.id_for_label }}">Skills / Responsibilities</label>
+                    {{ job.skill }}
+                    {% for err in form.skill.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                </div>
+
+                {# descr (CKEditor) - read more / detailed description #}
+                <div class="form-group">
+                    <label for="{{ form.descr.id_for_label }}">Detailed description / Read more</label>
+                    {{ job.descr }}
+                    {% for err in form.descr.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                </div>
+
+                {# industry + functional area + role #}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="{{ form.ind_type.id_for_label }}">Industry Type</label>
+                        {{ job.ind_type }}
+                        {% for err in form.ind_type.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.func_area.id_for_label }}">Functional Area</label>
+                        {{ job.func_area }}
+                        {% for err in form.func_area.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="{{ form.role.id_for_label }}">Role</label>
+                        {{ job.role }}
+                        {% for err in form.role.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.empl_type.id_for_label }}">Employment Type</label>
+                        {{ job.empl_type }}
+                        {% for err in form.empl_type.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.edu_or_elig.id_for_label }}">Education / Eligibility</label>
+                    {{ job.edu_or_elig }}
+                    {% for err in form.edu_or_elig.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                </div>
+
+                {# non-field errors (general) #}
+                {% if form.non_field_errors %}
+                <div class="error">{{ form.non_field_errors }}</div>
+                {% endif %}
+            </div>
+
+            <aside class="side-col">
+                <div class="photo-preview">
+                    <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:#444">Company Photo</div>
+                    {% if job.photo %}
+                    <img src="{{ job.photo.url }}" alt="Company photo">
+                    <div style="font-size:12px;color:#666;margin-top:8px">Current image — upload a new one to replace
+                    </div>
+                    {% else %}
+                    <div style="min-height:140px;display:flex;align-items:center;justify-content:center;color:#999">
+                        No image uploaded
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="meta-card">
+                    <div style="font-weight:700;margin-bottom:6px;">Quick meta</div>
+                    <div style="font-size:13px;color:#444;margin-bottom:6px;">Vacancy: <strong>{{ job.vacancy
+                            }}</strong></div>
+                    <div style="font-size:13px;color:#444;margin-bottom:6px;">Location: <strong>{{ job.location
+                            }}</strong></div>
+                    <div style="font-size:13px;color:#444;">Last updated: <strong>{{ job.date_time|date:"d M Y, H:i"
+                            }}</strong></div>
+                </div>
+
+                <div class="meta-card">
+                    <div style="font-weight:700;margin-bottom:8px;">Upload / Actions</div>
+
+                    <div class="form-group" style="margin-bottom:8px;">
+                        <label for="{{ form.photo.id_for_label }}">Replace Photo</label>
+                        {{ job.photo }}
+                        {% for err in form.photo.errors %}<div class="error">{{ err }}</div>{% endfor %}
+                    </div>
+
+                    <div style="margin-top:6px;">
+                        <label for="{{ form.url.id_for_label }}">Preview link</label>
+                        <div style="font-size:13px;color:#0077cc;word-break:break-all">{{ job.url }}</div>
+                    </div>
+
+                    <!-- <div class="btns">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <a href="{% url 'jobs:jobs_list' %}" class="btn btn-cancel">Cancel</a>
+                        <a href="{% url 'jobs:job_delete' job.pk %}" class="btn btn-danger"
+                            onclick="return confirm('Delete this job? This action cannot be undone.')">Delete</a>
+                    </div> -->
+                </div>
+
+            </aside>
+        </form>
+    </div>
+</div>
+
+{# CKEditor static fallback (if you didn't include widget.html in base) #}
+<script>
+    (function () {
+        // if form.media did not inject CKEditor, try to load static files (only works if ckeditor static is collected)
+        if (typeof CKEDITOR === 'undefined') {
+            var s1 = document.createElement('script');
+            s1.src = "{% static 'ckeditor/ckeditor/ckeditor.js' %}";
+            s1.onload = function () {
+                // init any textarea with ckeditor class (Django widget adds it)
+                if (typeof CKEDITOR !== 'undefined') {
+                    try { CKEDITOR.replaceAll(); } catch (e) { /* ignore */ }
+                }
+            };
+            document.head.appendChild(s1);
+        }
+    })();
+</script>
+
+{% endblock %}
