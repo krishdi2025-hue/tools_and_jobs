@@ -352,7 +352,7 @@
 
                     {% comment %} safe company access: check existence before property access {% endcomment %}
                     {% comment %} {% if user.is_authenticated and job.posted_by == user and job.posted_by.company and job.posted_by.company.is_company_verified %} {% endcomment %}
-                    {% if jobs.user == user %}
+                    {% if jobs.user == user and user.is_authenticated %}
                     <a class="apply-btn" href="{% url 'jobs:edit_job' jobs.pk %}">edit</a>
                
                    
@@ -360,14 +360,14 @@
                         <a class="apply-btn" href="{% url 'jobs:job_delete' jobs.pk %}">delete</a>
 
                    
-                    <a class="apply-btn" href="{% url 'jobs:about_job' jobs.pk %}">view</a>
-                    
-                    
-                    <a class="apply-btn" href="{{ jobs.url }}" target="_blank" rel="noopener">Apply Now</a>
-                   
-                    {% comment %} {% else %} {% endcomment %}
-                    <a class="apply-btn" href="{% url 'jobs:about_job' jobs.pk %}">Login to apply</a>  
-                    {% endif %}
+                        
+                        
+                        
+                        {% comment %} {% else %} {% endcomment %}
+                       
+                        {% endif %}
+                        <a class="apply-btn" href="{{ jobs.url }}" target="_blank" rel="noopener">Apply Now</a>
+                        <a class="apply-btn" href="{% url 'jobs:about_job' jobs.pk %}">view</a>
 
 {% comment %} 
                     {% if user.is_authenticated or user.is_company_verified %}
