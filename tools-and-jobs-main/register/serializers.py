@@ -14,7 +14,7 @@ class CompanyRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Company
-        fields = ['username', 'password', 'company_name', 'company_email', 'company_phone', 'company_address']
+        fields = ['username', 'password', 'company_name', 'company_email', 'company_phone', 'company_address','is_company_verified']
 
     def create(self, validated_data):
         username = validated_data.pop('username')

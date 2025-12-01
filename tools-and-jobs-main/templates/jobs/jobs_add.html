@@ -578,7 +578,7 @@
         <div class="right-col">
           <div class="desc-header">
             <div>
-              <div class="desc-title">Job Description</div>
+              <div class="desc-title">Company Description</div>
               <div class="desc-muted">Rich text editor. Changes update the live preview below.</div>
             </div>
           </div>
@@ -589,7 +589,7 @@
             {% if field.name == 'desc' or field.name == 'descr' %}
             <div class="field-wrap">
               <label for="{{ field.id_for_label }}" style="margin-bottom:8px">{{ field.label }}</label>
-              <div>{{ field }}</div>
+              <div>Job :{{ field }}</div>
               {% if field.help_text %}<div class="help-text">{{ field.help_text }}</div>{% endif %}
               {% if field.errors %}<div class="error-text">{{ field.errors|striptags }}</div>{% endif %}
             </div>

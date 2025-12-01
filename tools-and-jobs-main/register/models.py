@@ -7,6 +7,8 @@ class Company(models.Model):
     company_email = models.EmailField(unique=True)
     company_phone = models.CharField(max_length=15)
     company_address = models.TextField(blank=True, null=True)
+    is_company_verified = models.BooleanField(default=False)
+    posted_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='jobs')
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
