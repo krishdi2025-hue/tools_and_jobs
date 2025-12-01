@@ -36,3 +36,13 @@ class add_jobsAdmin(admin.ModelAdmin):
         return ''
 
     short_description.short_description = 'Description'
+
+
+# from django.contrib import admin
+# from .models import add_jobs
+
+# @admin.register(add_jobs)
+# class JobAdmin(admin.ModelAdmin):
+#     list_display = ('title','posted_by','created_at')
+#     list_filter = ('created_at',)
+#     search_fields = ('title','description','posted_by__username')

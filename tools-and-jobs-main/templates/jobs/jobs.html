@@ -296,6 +296,14 @@
     }
 </style>
 
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 <div class="site-container">
     <div class="jobs-header">
         <div class="jobs-left">
@@ -326,6 +334,7 @@
             <article class="job-card" aria-labelledby="job-{{ forloop.counter }}">
                 <div class="job-thumb"><img height="72px" width="72px" src="{{ jobs.photo.url }}" alt="{{ jobs.head }}">
                 </div>
+                  
                 <div class="job-content">
                     <h3 id="job-{{ forloop.counter }}">{{ jobs.head }}</h3>
 
@@ -341,7 +350,27 @@
                         <b>job description:</b> {{ jobs.descr|safe }}
                     </div>
 
-                    {% if user.is_authenticated %}
+                    {% comment %} safe company access: check existence before property access {% endcomment %}
+                    {% comment %} {% if user.is_authenticated and job.posted_by == user and job.posted_by.company and job.posted_by.company.is_company_verified %} {% endcomment %}
+                    {% if jobs.user == user %}
+                    <a class="apply-btn" href="{% url 'jobs:edit_job' jobs.pk %}">edit</a>
+               
+                   
+
+                        <a class="apply-btn" href="{% url 'jobs:job_delete' jobs.pk %}">delete</a>
+
+                   
+                    <a class="apply-btn" href="{% url 'jobs:about_job' jobs.pk %}">view</a>
+                    
+                    
+                    <a class="apply-btn" href="{{ jobs.url }}" target="_blank" rel="noopener">Apply Now</a>
+                   
+                    {% comment %} {% else %} {% endcomment %}
+                    <a class="apply-btn" href="{% url 'jobs:about_job' jobs.pk %}">Login to apply</a>  
+                    {% endif %}
+
+{% comment %} 
+                    {% if user.is_authenticated or user.is_company_verified %}
                     <div class="job-actions">
                         <a class="apply-btn" href="{{ jobs.url }}" target="_blank" rel="noopener">Apply Now</a>
                         <a class="apply-btn" href="{% url 'jobs:job_edit' jobs.pk %}">edit</a>
@@ -354,7 +383,8 @@
                             to
                             apply</a>
                     </div>
-                    {% endif %}
+                    {% endif %} {% endcomment %}
+                   
                 </div>
             </article>
             {% empty %}

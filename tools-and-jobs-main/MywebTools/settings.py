@@ -271,3 +271,8 @@ django_heroku.settings(locals())
 # Activate Django-Heroku if package is available.
 if django_heroku:
     django_heroku.settings(locals())
+
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/jobs/'
+LOGOUT_REDIRECT_URL = '/jobs/'
